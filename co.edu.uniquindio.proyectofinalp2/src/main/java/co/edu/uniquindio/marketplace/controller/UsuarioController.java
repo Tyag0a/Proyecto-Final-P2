@@ -1,11 +1,12 @@
 package co.edu.uniquindio.marketplace.controller;
 
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
+import co.edu.uniquindio.marketplace.model.Usuario;
 import co.edu.uniquindio.marketplace.services.IUsuarioControllerService;
 
 public class UsuarioController implements IUsuarioControllerService {
 
-    ModelFactory modelFactory;
+    static ModelFactory modelFactory;
     public UsuarioController(){
         modelFactory = ModelFactory.getInstance();
     }
@@ -14,5 +15,4 @@ public class UsuarioController implements IUsuarioControllerService {
     }
 }
 
-//implementacion de los metodos de IusuarioControllerService, los cuales retornan
-//usando la instancia de modelfactory
+

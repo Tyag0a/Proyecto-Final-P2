@@ -41,7 +41,7 @@ public class ModelFactory implements IModelFactoryService {
 
     }
 
-    public static Usuario agregarUsuario(){
+    public static Usuario agregarUsuario() throws Exception {
         return marketplace.getUsuario();
 
      }

@@ -1,10 +1,13 @@
 package co.edu.uniquindio.marketplace.model;
 
+import co.edu.uniquindio.marketplace.model.builder.PersonaBuilder;
+
 public class Persona {
     String nombre;
     String apellido;
     String cedula;
     String direccion;
+    Usuario usuarioAsociado;
 
     public String getDireccion() {
         return direccion;
@@ -38,11 +41,20 @@ public class Persona {
         this.nombre = nombre;
     }
 
+    public Usuario getUsuarioAsociado() { return usuarioAsociado; }
+
+    public void setUsuarioAsociado(Usuario usuarioAsociado) { this.usuarioAsociado = usuarioAsociado; }
+
 
     public Persona(String nombre, String apellido, String cedula, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.direccion = direccion;
+        this.usuarioAsociado = new Usuario();
+    }
+
+    public static PersonaBuilder<?> builder() {
+        return new PersonaBuilder<>();
     }
 }

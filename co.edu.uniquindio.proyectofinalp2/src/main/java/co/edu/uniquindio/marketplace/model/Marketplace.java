@@ -12,12 +12,13 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor {
     private List<Producto> productos = new ArrayList<>();
     private List<Usuario> usuarios = new ArrayList<>();
     private List<Vendedor> vendedores = new ArrayList<>();
+    Administrador administrador;
 
     public String nombre;
 
     public Marketplace() {}
 
-    public Marketplace(String nombre) {
+    public Marketplace(String nombre, Administrador administrador) {
         this.nombre = nombre;
     }
 

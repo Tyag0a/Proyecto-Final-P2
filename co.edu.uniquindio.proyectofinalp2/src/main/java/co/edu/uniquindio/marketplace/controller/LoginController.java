@@ -4,13 +4,13 @@ import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.model.Usuario;
 import co.edu.uniquindio.marketplace.services.IUsuarioControllerService;
 
-public class UsuarioController implements IUsuarioControllerService {
+public class LoginController implements IUsuarioControllerService {
 
     static ModelFactory modelFactory;
-    public UsuarioController(){
+    public LoginController(){
         modelFactory = ModelFactory.getInstance();
     }
-    public static Usuario crearUsuario(){
+    public static Usuario crearUsuario() throws Exception {
         return modelFactory.agregarUsuario();
     }
 }

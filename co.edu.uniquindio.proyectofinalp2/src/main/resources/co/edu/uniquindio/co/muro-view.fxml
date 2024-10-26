@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.72" prefHeight="564.0" prefWidth="776.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutX="38.0" layoutY="-1.0" prefHeight="515.0" prefWidth="740.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Mi Muro">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="560.0">
+                     <children>
+                        <TextField layoutX="491.0" layoutY="14.0" promptText="Buscar Persona" />
+                        <Button layoutX="654.0" layoutY="14.0" mnemonicParsing="false" text="Buscar" />
+                        <Separator layoutX="-1.0" layoutY="38.0" prefHeight="11.0" prefWidth="740.0" />
+                        <Label layoutX="127.0" layoutY="18.0" text="PRODUCTOS">
+                           <font>
+                              <Font name="Arial Narrow" size="14.0" />
+                           </font>
+                        </Label>
+                        <TabPane layoutY="39.0" prefHeight="496.0" prefWidth="361.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Mis productos">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Pagination prefHeight="421.0" prefWidth="362.0" />
+                                          <ScrollBar layoutY="2.0" orientation="VERTICAL" prefHeight="418.0" prefWidth="14.0" />
+                                          <Separator layoutX="81.0" layoutY="130.0" prefWidth="200.0" />
+                                          <Separator layoutX="81.0" layoutY="302.0" prefWidth="200.0" />
+                                          <Separator layoutX="78.0" layoutY="111.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Separator layoutX="275.0" layoutY="111.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Separator layoutX="78.0" layoutY="-39.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Separator layoutX="275.0" layoutY="-33.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Separator layoutX="78.0" layoutY="184.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Separator layoutX="275.0" layoutY="184.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <Separator layoutX="358.0" layoutY="-16.0" orientation="VERTICAL" prefHeight="477.0" prefWidth="8.0" />
+                                          <TextField layoutX="84.0" layoutY="99.0" prefHeight="17.0" prefWidth="84.0" promptText="Comentar Publicacion" />
+                                          <TextField layoutX="85.0" layoutY="271.0" prefHeight="26.0" prefWidth="82.0" promptText="Comentar Publicacion" />
+                                          <Button layoutX="203.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" text="like" />
+                                          <Button layoutX="208.0" layoutY="273.0" mnemonicParsing="false" text="like" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Otros Productos">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Separator layoutX="358.0" layoutY="-27.0" orientation="VERTICAL" prefHeight="493.0" prefWidth="8.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <Separator layoutX="357.0" layoutY="-17.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="8.0" />
+                        <Label layoutX="511.0" layoutY="49.0" text="SUGERENCIAS DE AMISTAD">
+                           <font>
+                              <Font name="Arial Narrow" size="14.0" />
+                           </font></Label>
+                        <TextField layoutX="491.0" layoutY="90.0" promptText="Usuario XXXX" />
+                        <TextField layoutX="491.0" layoutY="125.0" promptText="Usuario XXX" />
+                        <Button layoutX="654.0" layoutY="90.0" mnemonicParsing="false" text="AGREGAR" />
+                        <Button layoutX="654.0" layoutY="125.0" mnemonicParsing="false" text="AGREGAR" />
+                        <Button layoutX="654.0" layoutY="166.0" mnemonicParsing="false" text="AGREGAR" />
+                        <TextField layoutX="491.0" layoutY="166.0" promptText="Usuario XXX" />
+                        <Separator layoutX="361.0" layoutY="71.0" prefHeight="0.0" prefWidth="357.0" />
+                        <Separator layoutX="357.0" layoutY="203.0" prefHeight="0.0" prefWidth="378.0" />
+                        <Label layoutX="558.0" layoutY="211.0" text="CHATS">
+                           <font>
+                              <Font name="Arial Narrow" size="14.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="358.0" layoutY="232.0" prefHeight="5.0" prefWidth="381.0" />
+                        <TreeView layoutX="375.0" layoutY="243.0" prefHeight="172.0" prefWidth="361.0" />
+                        <Separator layoutX="375.0" layoutY="286.0" prefHeight="1.0" prefWidth="366.0" />
+                        <Separator layoutX="378.0" layoutY="329.0" prefHeight="8.0" prefWidth="366.0" />
+                        <Separator layoutX="375.0" layoutY="374.0" prefHeight="2.0" prefWidth="365.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text=" Aliado 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
+                           <font>
+                              <Font name="Berlin Sans FB" size="14.0" />
+                           </font>
+                        </Label>
+                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
+                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
+                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
+                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
+                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="1.0" prefWidth="299.0" />
+                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
+                           <font>
+                              <Font name="Arial Narrow" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="295.0" />
+                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
+                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
+                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
+                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="3.0" prefWidth="297.0" />
+                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Sus Productos">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Productos de contactos">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
+                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
+                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
+                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
+                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
+                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
+                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
+                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Aliado 2">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 3">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 4">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 5">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 6">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 7">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 8">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 9">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aliado 10">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="659.0" layoutY="523.0" mnemonicParsing="false" text="CERRAR SESION" />
+      <Button layoutX="487.0" layoutY="523.0" mnemonicParsing="false" text="ESTADISTICAS DE LA RED" />
+   </children>
+</AnchorPane>

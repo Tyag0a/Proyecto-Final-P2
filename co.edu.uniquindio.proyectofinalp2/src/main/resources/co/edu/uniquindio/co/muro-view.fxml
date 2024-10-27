@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.72" prefHeight="564.0" prefWidth="776.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.72" prefHeight="564.0" prefWidth="776.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.MuroViewController">
    <children>
       <TabPane layoutX="38.0" layoutY="-1.0" prefHeight="515.0" prefWidth="740.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -21,7 +21,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="560.0">
                      <children>
                         <TextField layoutX="491.0" layoutY="14.0" promptText="Buscar Persona" />
-                        <Button layoutX="654.0" layoutY="14.0" mnemonicParsing="false" text="Buscar" />
+                        <Button fx:id="btnBuscarUser" layoutX="654.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBuscarUser" text="Buscar" />
                         <Separator layoutX="-1.0" layoutY="38.0" prefHeight="11.0" prefWidth="740.0" />
                         <Label layoutX="127.0" layoutY="18.0" text="PRODUCTOS">
                            <font>
@@ -71,7 +71,7 @@
                            </font></Label>
                         <TextField layoutX="491.0" layoutY="90.0" promptText="Usuario XXXX" />
                         <TextField layoutX="491.0" layoutY="125.0" promptText="Usuario XXX" />
-                        <Button layoutX="654.0" layoutY="90.0" mnemonicParsing="false" text="AGREGAR" />
+                        <Button fx:id="btnAgregarContact" layoutX="654.0" layoutY="90.0" mnemonicParsing="false" onAction="#onAgregarAliado" text="AGREGAR" />
                         <Button layoutX="654.0" layoutY="125.0" mnemonicParsing="false" text="AGREGAR" />
                         <Button layoutX="654.0" layoutY="166.0" mnemonicParsing="false" text="AGREGAR" />
                         <TextField layoutX="491.0" layoutY="166.0" promptText="Usuario XXX" />
@@ -191,7 +191,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="659.0" layoutY="523.0" mnemonicParsing="false" text="CERRAR SESION" />
-      <Button layoutX="487.0" layoutY="523.0" mnemonicParsing="false" text="ESTADISTICAS DE LA RED" />
+      <Button fx:id="btnCerrarSesion" layoutX="659.0" layoutY="523.0" mnemonicParsing="false" onAction="#onCerrarSesion" text="CERRAR SESION" />
+      <Button fx:id="btnOpenWindow3" layoutX="487.0" layoutY="523.0" mnemonicParsing="false" onAction="#onOpenWindow3" text="ESTADISTICAS DE LA RED" />
    </children>
 </AnchorPane>

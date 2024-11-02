@@ -11,7 +11,7 @@ public class LoginController implements IUsuarioControllerService {
         modelFactory = ModelFactory.getInstance();
     }
     public static Usuario crearUsuario() throws Exception {
-        return modelFactory.agregarUsuario();
+        return ModelFactory.agregarUsuario();
     }
 }
 

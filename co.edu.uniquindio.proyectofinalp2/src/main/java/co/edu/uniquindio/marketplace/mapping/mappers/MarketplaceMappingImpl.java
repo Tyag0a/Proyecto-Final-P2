@@ -1,6 +1,5 @@
 package co.edu.uniquindio.marketplace.mapping.mappers;
 
-<<<<<<< Updated upstream
 import co.edu.uniquindio.marketplace.mapping.dto.AdministradorDto;
 import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
@@ -10,16 +9,14 @@ import co.edu.uniquindio.marketplace.model.Producto;
 import co.edu.uniquindio.marketplace.model.Usuario;
 import co.edu.uniquindio.marketplace.model.Vendedor;
 import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
-=======
-import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
 
-public class MarketplaceMappingImpl implements IMarketplaceMapping {
->>>>>>> Stashed changes
+import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MarketplaceMappingImpl implements IMarketplaceMapping {
+
     @Override
     public List<AdministradorDto> getAdministradoresDto(List<Administrador> listaAdministradores) {
         if (listaAdministradores == null) {

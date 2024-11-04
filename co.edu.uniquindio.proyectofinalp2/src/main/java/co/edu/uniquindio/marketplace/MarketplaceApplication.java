@@ -12,7 +12,7 @@ public class MarketplaceApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MarketplaceApplication.class.getResource("/co/edu/uniquindio/co/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 601, 423);
-        stage.setTitle("Marketplace");
+        stage.setTitle("Ingresa a Marketplace");
         stage.setScene(scene);
         stage.show();
     }

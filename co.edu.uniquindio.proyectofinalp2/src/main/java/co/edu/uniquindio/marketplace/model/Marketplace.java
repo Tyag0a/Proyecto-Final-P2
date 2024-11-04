@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, ICrudpersona, ICrudPublicacion {
@@ -19,11 +20,22 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
     public String nombre;
 
-    public Marketplace() {}
+    public Marketplace() {
+
+    }
 
     public Marketplace(String nombre, Administrador administrador) {
+
         this.nombre = nombre;
+        this.administrador = administrador;
+        this.productos = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
+        this.vendedores = new ArrayList<>();
+        this.personas = new ArrayList<>();
+        this.publicaciones = new ArrayList<>();
     }
+
+//-----------------------------------IMPLEMENTACION DE CRUDS----------------------------------------------------
 
     @Override
     public String crearProducto(String nombre, String imagen, String categoria, double precio, EstadoProducto estado) throws Exception {
@@ -229,5 +241,26 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
             }
         }
         return null;
+    }
+
+//------------------------------------METODOS BACKEND---------------------------------------------------------
+
+    /**
+     * Metodo para verificar la existencia de un usuario
+     */
+    public boolean verificarUsuario (String nombreUsuario, String contraseña){
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contraseña)){
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+//----------------------------------------GETTERS Y SETTERS------------------------------------------------------------------
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 }

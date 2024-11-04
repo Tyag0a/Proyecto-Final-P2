@@ -24,10 +24,6 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="txtNombreUsuario" layoutX="226.0" layoutY="47.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su usuario" />
-                        <Button fx:id="btnLogin" layoutX="226.0" layoutY="164.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: #2b94c8;" text="LOGIN">
-                           <font>
-                              <Font name="Berlin Sans FB" size="15.0" />
-                           </font></Button>
                         <TextField fx:id="txtContraseñaUser" layoutX="226.0" layoutY="107.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su contraseña" />
                         <Label layoutX="183.0" layoutY="209.0" prefHeight="22.0" prefWidth="235.0" text="¿No tienes una cuenta? registrate.">
                            <font>
@@ -44,11 +40,16 @@
                               <Image url="@viewmedia/user_icon.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="btnLogin" layoutX="271.0" layoutY="165.0" mnemonicParsing="false" onAction="#onLogin" style="-fx-background-color: #2b94c8;" text="LOGIN">
+                           <font>
+                              <Font name="Berlin Sans FB" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="CREAR USUARIO">
+          <Tab text="REGISTRARSE">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

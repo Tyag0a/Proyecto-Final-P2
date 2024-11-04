@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.factory;
 
+import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.marketplace.mapping.mappers.MarketplaceMappingImpl;
 import co.edu.uniquindio.marketplace.model.*;
 import co.edu.uniquindio.marketplace.services.IModelFactoryService;
@@ -39,6 +40,8 @@ public class ModelFactory implements IModelFactoryService {
         return marketplace.getUsuario();
 
     }
+
+//------------------------------------------------CRUDS---------------------------------------------------------------------------
 
     public String crearPersona(String nombre, String apellido, String cedula, String direccion, Usuario usuarioAsociado){
         return marketplace.crearPersona(nombre, apellido, cedula, direccion, usuarioAsociado);
@@ -86,6 +89,8 @@ public class ModelFactory implements IModelFactoryService {
         return marketplace.modificarVendedor(nombre, apellido, cedula, direccion,usuarioAsociado);
     }
 
+//-------------------------------------INICIALIZACION DE DATOS----------------------------------------------------------------------------
+
     public static Marketplace inicializarDatos () {
         Marketplace marketplace = new Marketplace();
 
@@ -122,6 +127,8 @@ public class ModelFactory implements IModelFactoryService {
         Usuario usuario4 = new Usuario("juanalpargata","8921j");
         Administrador administrador = new Administrador("juan","zuckerberg","14252324","direccionadmin","01",usuario4);
 
+        marketplace.getUsuarios().add(usuario1);
+
 
 
 
@@ -131,8 +138,13 @@ public class ModelFactory implements IModelFactoryService {
     }
 
 
-
-
+    @Override
+    public boolean validarInicioSesion(UsuarioDto usuario) {
+        if(marketplace.verificarUsuario(usuario.nombreUsuario(),usuario.contraseña())){
+            return true;
+        }
+        return false;
+    }
 }
 
 

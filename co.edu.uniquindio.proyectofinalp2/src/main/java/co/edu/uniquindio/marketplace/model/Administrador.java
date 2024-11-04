@@ -4,8 +4,11 @@ import co.edu.uniquindio.marketplace.model.builder.AdministradorBuilder;
 
 public class Administrador extends Persona{
 
-    public Administrador(String nombre, String apellido, String cedula, String direccion) {
-        super(nombre,apellido,cedula, direccion);
+    String idAmin;
+
+    public Administrador(String nombre, String apellido, String cedula, String direccion, String idAmin, Usuario usuarioAsociado) {
+        super(nombre,apellido,cedula, direccion,usuarioAsociado);
+        this.idAmin = idAmin;
 
     }
 

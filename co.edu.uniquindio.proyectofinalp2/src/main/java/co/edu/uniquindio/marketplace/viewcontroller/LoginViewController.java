@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class LoginViewController {
     LoginController loginController;
@@ -23,6 +24,18 @@ public class LoginViewController {
 
     @FXML
     private Button btnLogin;
+
+    @FXML
+    private ImageView imgPasswordIconLogin;
+
+    @FXML
+    private ImageView imgPasswordIconRegistro;
+
+    @FXML
+    private ImageView imgUserIconLogin;
+
+    @FXML
+    private ImageView imgUserIconRegistro;
 
     @FXML
     private TextField txtContraseñaUser;
@@ -55,6 +68,10 @@ public class LoginViewController {
 
         assert btnCrearCuenta != null : "fx:id=\"btnCrearCuenta\" was not injected: check your FXML file 'login-view.fxml'.";
         assert btnLogin != null : "fx:id=\"btnLogin\" was not injected: check your FXML file 'login-view.fxml'.";
+        assert imgPasswordIconLogin != null : "fx:id=\"imgPasswordIconLogin\" was not injected: check your FXML file 'login-view.fxml'.";
+        assert imgPasswordIconRegistro != null : "fx:id=\"imgPasswordIconRegistro\" was not injected: check your FXML file 'login-view.fxml'.";
+        assert imgUserIconLogin != null : "fx:id=\"imgUserIconLogin\" was not injected: check your FXML file 'login-view.fxml'.";
+        assert imgUserIconRegistro != null : "fx:id=\"imgUserIconRegistro\" was not injected: check your FXML file 'login-view.fxml'.";
         assert txtContraseñaUser != null : "fx:id=\"txtContraseñaUser\" was not injected: check your FXML file 'login-view.fxml'.";
         assert txtNombreUsuario != null : "fx:id=\"txtNombreUsuario\" was not injected: check your FXML file 'login-view.fxml'.";
         assert txtNuevaContraseñaUser != null : "fx:id=\"txtNuevaContraseñaUser\" was not injected: check your FXML file 'login-view.fxml'.";

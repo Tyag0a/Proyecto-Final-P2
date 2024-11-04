@@ -7,15 +7,15 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class Vendedor extends Persona {
-
+    private final int maxAsociados = 10;
     Collection<Producto> listProductos;
     Muro muro;
     Collection<Vendedor> listVendedorsAsociados;
     Collection<Vendedor> listChats;
 
 
-    public Vendedor (String nombre, String apellido,String cedula, String direccion) {
-        super(nombre, apellido, cedula, direccion);
+    public Vendedor (String nombre, String apellido,String cedula, String direccion,Usuario usuarioAsociado) {
+        super(nombre, apellido, cedula, direccion,usuarioAsociado);
         this.listProductos = new LinkedList<>();
         this.muro = new Muro();
         this.listVendedorsAsociados = new LinkedList<>();

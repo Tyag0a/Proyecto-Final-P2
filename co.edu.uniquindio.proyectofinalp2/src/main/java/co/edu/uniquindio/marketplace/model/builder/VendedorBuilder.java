@@ -31,7 +31,7 @@ public class VendedorBuilder extends PersonaBuilder<VendedorBuilder> {
 
     @Override
     public Vendedor build() {
-        Vendedor vendedor = new Vendedor(nombre, apellido, cedula, direccion);
+        Vendedor vendedor = new Vendedor(nombre, apellido, cedula, direccion,usuarioAsociado);
         vendedor.setUsuarioAsociado(usuarioAsociado);
         vendedor.setListProductos(listProductos);
         vendedor.setMuro(muro);

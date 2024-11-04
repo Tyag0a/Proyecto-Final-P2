@@ -46,7 +46,7 @@ public class Persona {
     public void setUsuarioAsociado(Usuario usuarioAsociado) { this.usuarioAsociado = usuarioAsociado; }
 
 
-    public Persona(String nombre, String apellido, String cedula, String direccion) {
+    public Persona(String nombre, String apellido, String cedula, String direccion, Usuario usuarioAsociado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;

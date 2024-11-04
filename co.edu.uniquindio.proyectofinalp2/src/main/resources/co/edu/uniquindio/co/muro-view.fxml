@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -149,8 +150,13 @@
                                                                <children>
                                                                   <AnchorPane prefHeight="60.0" prefWidth="377.0">
                                                                      <children>
-                                                                        <Label fx:id="lblUsuarioSugerido1" layoutX="34.0" layoutY="27.0" text="USUARIO 1" />
+                                                                        <Label fx:id="lblUsuarioSugerido1" layoutX="88.0" layoutY="27.0" text="USUARIO 1" />
                                                                         <Button fx:id="btnAgregarSugerencia1" layoutX="282.0" layoutY="23.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
+                                                                        <ImageView fx:id="imgUserIconSugerencia1" fitHeight="25.0" fitWidth="24.0" layoutX="38.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../../../java/co/edu/uniquindio/marketplace/viewmedia/user_icon.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
@@ -159,8 +165,13 @@
                                                                <children>
                                                                   <AnchorPane prefHeight="61.0" prefWidth="746.0">
                                                                      <children>
-                                                                        <Label fx:id="lblUsuarioSugerido2" layoutX="35.0" layoutY="22.0" text="USUARIO 2" />
+                                                                        <Label fx:id="lblUsuarioSugerido2" layoutX="88.0" layoutY="22.0" text="USUARIO 2" />
                                                                         <Button fx:id="btnAgregarSugerencia2" layoutX="284.0" layoutY="18.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
+                                                                        <ImageView fx:id="imgUserIconSugerencia2" fitHeight="25.0" fitWidth="24.0" layoutX="37.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../../../java/co/edu/uniquindio/marketplace/viewmedia/user_icon.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
@@ -169,8 +180,13 @@
                                                                <children>
                                                                   <AnchorPane prefHeight="40.0" prefWidth="564.0">
                                                                      <children>
-                                                                        <Label fx:id="lblUsuarioSugerido3" layoutX="34.0" layoutY="19.0" text="USUARIO 3" />
+                                                                        <Label fx:id="lblUsuarioSugerido3" layoutX="87.0" layoutY="19.0" text="USUARIO 3" />
                                                                         <Button fx:id="btnAgregarSugerencia3" layoutX="282.0" layoutY="15.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
+                                                                        <ImageView fx:id="imgUserIconSugerencia3" fitHeight="25.0" fitWidth="24.0" layoutX="38.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../../../java/co/edu/uniquindio/marketplace/viewmedia/user_icon.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                      </children>
                                                                   </AnchorPane>
                                                                </children>
@@ -179,8 +195,13 @@
                                                                <children>
                                                                   <AnchorPane prefHeight="60.0" prefWidth="485.0">
                                                                      <children>
-                                                                        <Label fx:id="lblUsuarioSugerido4" layoutX="34.0" layoutY="22.0" text="USUARIO 4" />
+                                                                        <Label fx:id="lblUsuarioSugerido4" layoutX="86.0" layoutY="21.0" text="USUARIO 4" />
                                                                         <Button fx:id="btnAgregarSugerencia4" layoutX="283.0" layoutY="18.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
+                                                                        <ImageView fx:id="imgUserIconSugerencia4" fitHeight="25.0" fitWidth="24.0" layoutX="39.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../../../java/co/edu/uniquindio/marketplace/viewmedia/user_icon.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                      </children></AnchorPane>
                                                                </children>
                                                             </HBox>
@@ -188,8 +209,13 @@
                                                                <children>
                                                                   <AnchorPane prefHeight="64.0" prefWidth="546.0">
                                                                      <children>
-                                                                        <Label fx:id="lblUsuarioSugerido5" layoutX="34.0" layoutY="20.0" text="USUARIO 5" />
+                                                                        <Label fx:id="lblUsuarioSugerido5" layoutX="85.0" layoutY="20.0" text="USUARIO 5" />
                                                                         <Button fx:id="btnAgregarSugerencia5" layoutX="283.0" layoutY="16.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
+                                                                        <ImageView fx:id="imgUserIconSugerencia5" fitHeight="25.0" fitWidth="24.0" layoutX="40.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../../../java/co/edu/uniquindio/marketplace/viewmedia/user_icon.png" />
+                                                                           </image>
+                                                                        </ImageView>
                                                                      </children></AnchorPane>
                                                                </children>
                                                             </HBox>

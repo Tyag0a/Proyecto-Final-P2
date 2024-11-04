@@ -62,12 +62,12 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
 
     @Override
     public ProductoDto productoToProductoDto(Producto producto) {
-        return new ProductoDto(producto.getNombre(), producto.getImagen(), producto.getCategoria(), producto.getPrecio());
+        return new ProductoDto(producto.getNombre(), producto.getRutaImagen(), producto.getCategoria(), producto.getPrecio(),producto.getEstadoProducto());
     }
 
     @Override
     public Producto productoDtoToProducto(ProductoDto productoDto) {
-        return Producto.builder().setNombre(productoDto.nombre()).setImagen(productoDto.imagen()).setCategoria(productoDto.categoria()).setPrecio(productoDto.precio()).build();
+        return Producto.builder().setNombre(productoDto.nombre()).setImagen(productoDto.rutaImagen()).setCategoria(productoDto.categoria()).setPrecio(productoDto.precio()).build();
     }
 
     @Override

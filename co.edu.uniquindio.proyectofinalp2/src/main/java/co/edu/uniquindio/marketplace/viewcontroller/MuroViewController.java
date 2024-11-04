@@ -111,6 +111,21 @@ public class MuroViewController {
     private ImageView imgPublicacion31;
 
     @FXML
+    private ImageView imgUserIconSugerencia1;
+
+    @FXML
+    private ImageView imgUserIconSugerencia2;
+
+    @FXML
+    private ImageView imgUserIconSugerencia3;
+
+    @FXML
+    private ImageView imgUserIconSugerencia4;
+
+    @FXML
+    private ImageView imgUserIconSugerencia5;
+
+    @FXML
     private Label lblFechaMyPublicacion1;
 
     @FXML
@@ -350,6 +365,11 @@ public class MuroViewController {
         assert imgPublicacion21 != null : "fx:id=\"imgPublicacion21\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert imgPublicacion3 != null : "fx:id=\"imgPublicacion3\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert imgPublicacion31 != null : "fx:id=\"imgPublicacion31\" was not injected: check your FXML file 'muro-view.fxml'.";
+        assert imgUserIconSugerencia1 != null : "fx:id=\"imgUserIconSugerencia1\" was not injected: check your FXML file 'muro-view.fxml'.";
+        assert imgUserIconSugerencia2 != null : "fx:id=\"imgUserIconSugerencia2\" was not injected: check your FXML file 'muro-view.fxml'.";
+        assert imgUserIconSugerencia3 != null : "fx:id=\"imgUserIconSugerencia3\" was not injected: check your FXML file 'muro-view.fxml'.";
+        assert imgUserIconSugerencia4 != null : "fx:id=\"imgUserIconSugerencia4\" was not injected: check your FXML file 'muro-view.fxml'.";
+        assert imgUserIconSugerencia5 != null : "fx:id=\"imgUserIconSugerencia5\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert lblFechaMyPublicacion1 != null : "fx:id=\"lblFechaMyPublicacion1\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert lblFechaMyPublicacion2 != null : "fx:id=\"lblFechaMyPublicacion2\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert lblFechaPublicacion1 != null : "fx:id=\"lblFechaPublicacion1\" was not injected: check your FXML file 'muro-view.fxml'.";

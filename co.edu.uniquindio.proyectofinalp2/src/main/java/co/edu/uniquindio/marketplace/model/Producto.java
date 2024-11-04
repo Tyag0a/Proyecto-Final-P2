@@ -1,22 +1,26 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.model.builder.ProductoBuilder;
+import javafx.scene.image.Image;
 
 public class Producto {
     String nombre;
-    String imagen;
+    Image imagen;
     String categoria;
     double precio;
     Publicacion publicacion;
     EstadoProducto estadoProducto;
+    String rutaImagen;
+    String idVendedor;
 
-    public Producto(String nombre, String imagen, String categoria, double precio) {
+    public Producto(String nombre, String rutaImagen, String categoria, double precio, EstadoProducto estadoProducto) {
         this.nombre = nombre;
-        this.imagen = imagen;
+        this.imagen = new Image(getClass().getResource(rutaImagen).toString());
         this.categoria = categoria;
         this.precio = precio;
-        this.publicacion = null;
-        this.estadoProducto = null;
+        this.publicacion = publicacion;
+        this.estadoProducto = estadoProducto;
+        this.rutaImagen = rutaImagen;
     }
 
     public static ProductoBuilder builder() {
@@ -31,11 +35,15 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getImagen() {
+    public Image getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public  String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setImagen(Image imagen) {
         this.imagen = imagen;
     }
 
@@ -69,5 +77,13 @@ public class Producto {
 
     public void setEstadoProducto(EstadoProducto estadoProducto) {
         this.estadoProducto = estadoProducto;
+    }
+
+    public String getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(String idVendedor) {
+        this.idVendedor = idVendedor;
     }
 }

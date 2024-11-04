@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.services.*;
+import javafx.scene.image.Image;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,14 +26,14 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String crearProducto(String nombre, String imagen, String categoria, double precio) throws Exception {
-        Producto producto = new Producto(nombre, imagen, categoria, precio);
+    public String crearProducto(String nombre, String imagen, String categoria, double precio, EstadoProducto estado) throws Exception {
+        Producto producto = new Producto(nombre, imagen, categoria, precio,estado);
         productos.add(producto);
         return "Producto creado: " + nombre;
     }
 
     @Override
-    public String eliminarProducto(String nombre, String imagen, String categoria, double precio) throws Exception {
+    public String eliminarProducto(String nombre, Image imagen, String categoria, double precio,EstadoProducto estado) throws Exception {
         Producto producto = getProducto(nombre);
         if (producto != null) {
             productos.remove(producto);
@@ -42,7 +43,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String modificarProducto(String nombre, String imagen, String categoria, double precio) throws Exception {
+    public String modificarProducto(String nombre, Image imagen, String categoria, double precio,EstadoProducto estado) throws Exception {
         Producto producto = getProducto(nombre);
         if (producto != null) {
             producto.setImagen(imagen);
@@ -108,14 +109,14 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String crearVendedor(String nombre, String apellido, String cedula, String direccion) throws Exception {
-        Vendedor vendedor = new Vendedor(nombre, apellido, cedula, direccion);
+    public String crearVendedor(String nombre, String apellido, String cedula, String direccion, Usuario usuarioAsociado) throws Exception {
+        Vendedor vendedor = new Vendedor(nombre, apellido, cedula, direccion,usuarioAsociado);
         vendedores.add(vendedor);
         return "Vendedor creado: " + nombre + " " + apellido;
     }
 
     @Override
-    public String eliminarVendedor(String nombre, String apellido, String cedula, String direccion) throws Exception {
+    public String eliminarVendedor(String nombre, String apellido, String cedula, String direccion,Usuario usuarioAsociado) throws Exception {
         Vendedor vendedor = getVendedor(nombre, apellido);
         if (vendedor != null) {
             vendedores.remove(vendedor);
@@ -125,7 +126,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String modificarVendedor(String nombre, String apellido, String cedula, String direccion) throws Exception {
+    public String modificarVendedor(String nombre, String apellido, String cedula, String direccion,Usuario usuarioAsociado) throws Exception {
         Vendedor vendedor = getVendedor(nombre, apellido);
         if (vendedor != null) {
             vendedor.setCedula(cedula);
@@ -153,13 +154,13 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
         return null;
     }
     @Override
-    public String crearPersona(String nombre, String apellido, String cedula, String direccion) {
-        personas.add(new Persona(nombre, apellido, cedula, direccion));
+    public String crearPersona(String nombre, String apellido, String cedula, String direccion, Usuario usuarioAsociado) {
+        personas.add(new Persona(nombre, apellido, cedula, direccion, usuarioAsociado));
         return "Persona creada: " + nombre + " " + apellido;
     }
 
     @Override
-    public String eliminarPersona(String nombre, String apellido, String cedula, String direccion) {
+    public String eliminarPersona(String nombre, String apellido, String cedula, String direccion,Usuario usuarioAsociado) {
         Persona persona = getPersona(nombre, apellido, cedula, direccion);
         if (persona != null) {
             personas.remove(persona);
@@ -169,7 +170,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String modificarPersona(String nombre, String apellido, String cedula, String direccion) {
+    public String modificarPersona(String nombre, String apellido, String cedula, String direccion,Usuario usuarioAsociado) {
         Persona persona = getPersona(nombre, apellido, cedula, direccion);
         if (persona != null) {
             persona.setDireccion(direccion);
@@ -192,15 +193,15 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
                 .orElse(null);
     }
     @Override
-    public String crearPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion) throws Exception {
-        Publicacion publicacion = new Publicacion(fechaPublicacion, horaPublicacion);
+    public String crearPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception {
+        Publicacion publicacion = new Publicacion(fechaPublicacion, horaPublicacion,producto,descripcion);
         publicaciones.add(publicacion);
         return "Publicación creada: " + fechaPublicacion + " " + horaPublicacion;
     }
 
     @Override
-    public String eliminarPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion) throws Exception {
-        Publicacion publicacion = getPublicacion(fechaPublicacion, horaPublicacion);
+    public String eliminarPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception {
+        Publicacion publicacion = getPublicacion(fechaPublicacion, horaPublicacion,producto,descripcion);
         if (publicacion != null) {
             publicaciones.remove(publicacion);
             return "Publicación eliminada: " + fechaPublicacion + " " + horaPublicacion;
@@ -209,8 +210,8 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String modificarPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion) throws Exception {
-        Publicacion publicacion = getPublicacion(fechaPublicacion, horaPublicacion);
+    public String modificarPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception {
+        Publicacion publicacion = getPublicacion(fechaPublicacion, horaPublicacion,producto,descripcion);
         if (publicacion != null) {
             publicacion.setFechaPublicacion(fechaPublicacion);
             publicacion.setHoraPublicacion(horaPublicacion);
@@ -220,7 +221,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public Publicacion getPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion) throws Exception {
+    public Publicacion getPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception {
         for (Publicacion publicacion : publicaciones) {
             if (publicacion.getFechaPublicacion().equals(fechaPublicacion) &&
                     publicacion.getHoraPublicacion().equals(horaPublicacion)) {

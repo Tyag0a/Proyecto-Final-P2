@@ -11,13 +11,18 @@ public class Publicacion {
     LocalDate fechaPublicacion;
     LocalDateTime horaPublicacion;
     Collection<Comentario> listaComentarios;
+    Collection<Vendedor> listaLikesVendedor;
     Producto productoPublicado;
+    String descripcionPublicacion;
 
-    public Publicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion) {
+    public Publicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion, Producto productoPublicado, String descripcionPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
         this.horaPublicacion = horaPublicacion;
         this.listaComentarios = new ArrayList<Comentario>();
-        this.productoPublicado = null;
+        this.listaLikesVendedor = new ArrayList<Vendedor>();
+        this.descripcionPublicacion = descripcionPublicacion;
+        this.productoPublicado = productoPublicado;
+
     }
 
     public static PublicacionBuilder builder() {
@@ -55,5 +60,15 @@ public class Publicacion {
     public void setProductoPublicado(Producto productoPublicado) {
         this.productoPublicado = productoPublicado;
     }
+
+    public String getDescripcionPublicacion() {
+        return descripcionPublicacion;
+    }
+
+    public void setDescripcionPublicacion(String descripcionPublicacion) {
+        this.descripcionPublicacion = descripcionPublicacion;
+    }
+
+
 
 }

@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -21,17 +23,27 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="txtNombreUsuario" layoutX="226.0" layoutY="50.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su usuario" />
+                        <TextField fx:id="txtNombreUsuario" layoutX="226.0" layoutY="47.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su usuario" />
                         <Button fx:id="btnLogin" layoutX="226.0" layoutY="164.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: #2b94c8;" text="LOGIN">
                            <font>
                               <Font name="Berlin Sans FB" size="15.0" />
                            </font></Button>
-                        <TextField fx:id="txtContraseñaUser" layoutX="226.0" layoutY="105.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su contraseña" />
-                        <Label layoutX="201.0" layoutY="210.0" prefHeight="20.0" prefWidth="200.0" text="¿No tienes una cuenta? registrate.">
+                        <TextField fx:id="txtContraseñaUser" layoutX="226.0" layoutY="107.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su contraseña" />
+                        <Label layoutX="183.0" layoutY="209.0" prefHeight="22.0" prefWidth="235.0" text="¿No tienes una cuenta? registrate.">
                            <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
+                              <Font name="Berlin Sans FB" size="16.0" />
                            </font>
                         </Label>
+                        <ImageView fx:id="imgPasswordIconLogin" fitHeight="35.0" fitWidth="30.0" layoutX="186.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@viewmedia/password_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgUserIconLogin" fitHeight="26.0" fitWidth="27.0" layoutX="188.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@viewmedia/user_icon.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
             </content>
@@ -46,6 +58,16 @@
                            <font>
                               <Font name="Berlin Sans FB" size="15.0" />
                            </font></Button>
+                        <ImageView fx:id="imgUserIconRegistro" fitHeight="26.0" fitWidth="27.0" layoutX="170.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@viewmedia/user_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPasswordIconRegistro" fitHeight="35.0" fitWidth="30.0" layoutX="183.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@viewmedia/password_icon.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
             </content>
@@ -53,9 +75,9 @@
         </tabs>
       </TabPane>
       <Separator layoutY="84.0" prefHeight="4.0" prefWidth="601.0" />
-      <Label layoutX="99.0" layoutY="32.0" text="BIENVENIDO A MARKETPLACE">
+      <Label layoutX="79.0" layoutY="32.0" text="BIENVENIDO A MARKETPLACE">
          <font>
-            <Font name="Berlin Sans FB" size="31.0" />
+            <Font name="Berlin Sans FB" size="33.0" />
          </font>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">

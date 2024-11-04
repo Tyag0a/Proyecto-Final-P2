@@ -6,10 +6,17 @@ import java.util.Collection;
 public class Muro {
     Collection<Publicacion> listPublicaciones;
     Collection<Chat> listChats;
+    String idvendedor;
 
     public Muro() {
         listPublicaciones = new ArrayList<Publicacion>();
         listChats = new ArrayList<>();
+    }
+
+    public Muro(String idvendedor) {
+        listPublicaciones = new ArrayList<Publicacion>();
+        listChats = new ArrayList<>();
+        this.idvendedor = idvendedor;
     }
 
     public void setListChats(Collection<Chat> listChats) {

@@ -11,6 +11,7 @@ public class PublicacionBuilder {
     private LocalDateTime horaPublicacion;
     private Collection<Comentario> listaComentarios = new ArrayList<>();
     private Producto productoPublicado;
+    String descripcionPublicacion;
 
     public PublicacionBuilder setFechaPublicacion(LocalDate fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
@@ -33,6 +34,6 @@ public class PublicacionBuilder {
     }
 
     public Publicacion build() {
-        return new Publicacion(fechaPublicacion, horaPublicacion);
+        return new Publicacion(fechaPublicacion, horaPublicacion,productoPublicado,descripcionPublicacion);
     }
 }

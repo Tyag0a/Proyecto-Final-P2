@@ -36,7 +36,7 @@ public class PersonaBuilder<T extends PersonaBuilder<T>> {
     }
 
     public Persona build() {
-        return new Persona(nombre, apellido, cedula, direccion);
+        return new Persona(nombre, apellido, cedula, direccion,usuarioAsociado);
     }
 
     protected T self() {

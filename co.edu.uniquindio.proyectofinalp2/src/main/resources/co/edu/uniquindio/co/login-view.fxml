@@ -14,35 +14,35 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.86" prefHeight="423.0" prefWidth="601.0" style="-fx-background-color: Gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.LoginViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.86" prefHeight="469.0" prefWidth="601.0" style="-fx-background-color: Gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.LoginViewController">
    <children>
       <Separator layoutX="-5.0" layoutY="85.0" prefHeight="4.0" prefWidth="601.0" />
       <TabPane layoutY="85.0" prefHeight="340.0" prefWidth="601.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="INICIAR SESION">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="601.0">
                      <children>
-                        <TextField fx:id="txtNombreUsuario" layoutX="226.0" layoutY="47.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su usuario" />
-                        <TextField fx:id="txtContraseñaUser" layoutX="226.0" layoutY="107.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su contraseña" />
-                        <Label layoutX="183.0" layoutY="209.0" prefHeight="22.0" prefWidth="235.0" text="¿No tienes una cuenta? registrate.">
+                        <TextField fx:id="txtNombreUsuario" layoutX="227.0" layoutY="64.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su usuario" />
+                        <TextField fx:id="txtContraseñaUser" layoutX="227.0" layoutY="122.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese su contraseña" />
+                        <Label layoutX="170.0" layoutY="225.0" prefHeight="18.0" prefWidth="262.0" text="¿No tienes una cuenta? registrate.">
                            <font>
-                              <Font name="Berlin Sans FB" size="16.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imgPasswordIconLogin" fitHeight="35.0" fitWidth="30.0" layoutX="186.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPasswordIconLogin" fitHeight="35.0" fitWidth="30.0" layoutX="186.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@viewmedia/password_icon.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgUserIconLogin" fitHeight="26.0" fitWidth="27.0" layoutX="188.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgUserIconLogin" fitHeight="26.0" fitWidth="27.0" layoutX="188.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@viewmedia/user_icon.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="btnLogin" layoutX="271.0" layoutY="165.0" mnemonicParsing="false" onAction="#onLogin" style="-fx-background-color: #2b94c8;" text="LOGIN">
+                        <Button fx:id="btnLogin" layoutX="270.0" layoutY="179.0" mnemonicParsing="false" onAction="#onLogin" style="-fx-background-color: #2b94c8;" text="LOGIN">
                            <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
+                              <Font name="Berlin Sans FB" size="15.0" />
                            </font>
                         </Button>
                      </children>
@@ -51,22 +51,36 @@
           </Tab>
           <Tab text="REGISTRARSE">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="330.0" prefWidth="598.0">
                      <children>
-                        <TextField fx:id="txtNuevoNombreUser" layoutX="209.0" layoutY="55.0" prefHeight="34.0" prefWidth="184.0" promptText="Ingrese un nombre de usuario" />
-                        <TextField fx:id="txtNuevaContraseñaUser" layoutX="227.0" layoutY="113.0" prefHeight="34.0" prefWidth="149.0" promptText="Ingrese una contraseña" />
-                        <Button fx:id="btnCrearCuenta" layoutX="227.0" layoutY="169.0" mnemonicParsing="false" onAction="#onCrearNuevoUsuario" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: #2b94c8;" text="CREAR CUENTA">
+                        <TextField fx:id="txtNuevoNombreUser" layoutX="209.0" layoutY="145.0" prefHeight="34.0" prefWidth="184.0" promptText=" Ingrese un nombre de usuario" />
+                        <TextField fx:id="txtNuevaContraseñaUser" layoutX="209.0" layoutY="192.0" prefHeight="34.0" prefWidth="185.0" promptText="     Ingrese una contraseña" />
+                        <Button fx:id="btnCrearCuenta" layoutX="231.0" layoutY="254.0" mnemonicParsing="false" onAction="#onCrearNuevoUsuario" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #2b94c8;" text="CREAR CUENTA">
                            <font>
-                              <Font name="Berlin Sans FB" size="15.0" />
+                              <Font name="Berlin Sans FB" size="16.0" />
                            </font></Button>
-                        <ImageView fx:id="imgUserIconRegistro" fitHeight="26.0" fitWidth="27.0" layoutX="170.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgUserIconRegistro" fitHeight="26.0" fitWidth="27.0" layoutX="94.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@viewmedia/user_icon.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgPasswordIconRegistro" fitHeight="35.0" fitWidth="30.0" layoutX="183.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPasswordIconRegistro" fitHeight="35.0" fitWidth="30.0" layoutX="160.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@viewmedia/password_icon.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtNuevoNombreVendedor" layoutX="136.0" layoutY="45.0" prefHeight="31.0" prefWidth="150.0" promptText="             Nombre" />
+                        <TextField fx:id="txtNuevoApellidoVendedor" layoutX="303.0" layoutY="45.0" prefHeight="31.0" prefWidth="149.0" promptText="             Apellido" />
+                        <TextField fx:id="txtNuevaCedulaVendedor" layoutX="137.0" layoutY="97.0" prefHeight="31.0" prefWidth="149.0" promptText="              Cedula" />
+                        <TextField fx:id="txtNuevaDireccionVendedor" layoutX="303.0" layoutY="97.0" prefHeight="31.0" prefWidth="149.0" promptText="            Direccion" />
+                        <ImageView fx:id="imgUserIconRegistro2" fitHeight="26.0" fitWidth="27.0" layoutX="162.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@viewmedia/user_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgEmailIconRegistro" fitHeight="26.0" fitWidth="27.0" layoutX="94.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@viewmedia/email_icon.png" />
                            </image>
                         </ImageView>
                      </children>

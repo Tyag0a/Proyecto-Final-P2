@@ -77,7 +77,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String crearUsuario(String nombreUsuario, String contraseña) throws Exception {
+    public String crearUsuario(String nombreUsuario, String contraseña) {
         Usuario usuario = new Usuario(nombreUsuario, contraseña);
         usuarios.add(usuario);
         return "Usuario creado: " + nombreUsuario;
@@ -121,10 +121,15 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String crearVendedor(String nombre, String apellido, String cedula, String direccion, Usuario usuarioAsociado) throws Exception {
-        Vendedor vendedor = new Vendedor(nombre, apellido, cedula, direccion,usuarioAsociado);
-        vendedores.add(vendedor);
-        return "Vendedor creado: " + nombre + " " + apellido;
+    public boolean crearVendedor(Vendedor newVendedor) {
+
+        if (newVendedor != null) {
+            vendedores.add(newVendedor);
+            crearUsuario(newVendedor.usuarioAsociado.getNombreUsuario(),newVendedor.usuarioAsociado.getContraseña());
+            return true;
+
+        }
+        return false ;
     }
 
     @Override
@@ -258,9 +263,31 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
         return false;
     }
 
+    /**
+     * Metodo para verificar la existencia de un vendedor
+     */
+    public boolean verificarVendedorExistente(String cedula) {
+        Vendedor vendedorExistente = null;
+        for (Vendedor vendedor : vendedores) {
+            if (vendedor.getCedula().equals(cedula)) {
+                vendedorExistente = vendedor;
+                break;
+            }
+        }
+
+        if (vendedorExistente == null) {
+            return true;
+        }
+        return false;
+    }
+
 //----------------------------------------GETTERS Y SETTERS------------------------------------------------------------------
 
     public List<Usuario> getUsuarios() {
         return usuarios;
+    }
+
+    public List<Vendedor> getVendedores() {
+        return vendedores;
     }
 }

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.factory;
 
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
+import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.mapping.mappers.MarketplaceMappingImpl;
 import co.edu.uniquindio.marketplace.model.*;
 import co.edu.uniquindio.marketplace.services.IModelFactoryService;
@@ -79,8 +80,15 @@ public class ModelFactory implements IModelFactoryService {
     public String modificarUsuario(String nombreUsuario, String contraseña) throws Exception {
         return marketplace.modificarUsuario(nombreUsuario, contraseña);
     }
-    public String crearVendedor(String nombre, String apellido,String cedula, String direccion,Usuario usuarioAsociado) throws Exception{
-        return marketplace.crearVendedor(nombre, apellido, cedula, direccion,usuarioAsociado);
+    public boolean agregarVendedor(VendedorDto vendedorDto){
+        if(getMarketplace().verificarVendedorExistente(vendedorDto.cedula())){
+            Vendedor newVendedor = mapper.vendedorDtoToVendedor(vendedorDto);
+
+            getMarketplace().crearVendedor(newVendedor);
+            return true;
+
+        }
+        return false;
     }
     public String eliminarVendedor(String nombre, String apellido,String cedula, String direccion,Usuario usuarioAsociado) throws Exception{
         return marketplace.eliminarVendedor(nombre, apellido, cedula, direccion,usuarioAsociado);
@@ -128,6 +136,8 @@ public class ModelFactory implements IModelFactoryService {
         Administrador administrador = new Administrador("juan","zuckerberg","14252324","direccionadmin","01",usuario4);
 
         marketplace.getUsuarios().add(usuario1);
+        marketplace.getVendedores().add(vendedor1);
+        marketplace.getVendedores().add(vendedor2);
 
 
 

@@ -106,12 +106,12 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
 
     @Override
     public VendedorDto vendedorToVendedorDto(Vendedor vendedor) {
-        return new VendedorDto(vendedor.getNombre(), vendedor.getApellido(), vendedor.getCedula(), vendedor.getDireccion());
+        return new VendedorDto(vendedor.getNombre(), vendedor.getApellido(), vendedor.getCedula(), vendedor.getDireccion(),vendedor.getUsuarioAsociado());
     }
 
     @Override
     public Vendedor vendedorDtoToVendedor(VendedorDto vendedorDto) {
-        return Vendedor.builder().setNombre(vendedorDto.nombre()).setApellido(vendedorDto.apellido()).setCedula(vendedorDto.cedula()).setDireccion(vendedorDto.direccion()).build();
+        return Vendedor.builder().setNombre(vendedorDto.nombre()).setApellido(vendedorDto.apellido()).setCedula(vendedorDto.cedula()).setDireccion(vendedorDto.direccion()).setUsuarioAsociado(vendedorDto.usuarioAsociado()).build();
     }
 }
 

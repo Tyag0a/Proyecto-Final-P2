@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, ICrudpersona, ICrudPublicacion {
@@ -210,10 +209,14 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
                 .orElse(null);
     }
     @Override
-    public String crearPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception {
-        Publicacion publicacion = new Publicacion(fechaPublicacion, horaPublicacion,producto,descripcion);
-        publicaciones.add(publicacion);
-        return "Publicación creada: " + fechaPublicacion + " " + horaPublicacion;
+    public boolean crearPublicacion(Publicacion publicacion, Vendedor vendedor)  {
+        if(publicacionExiste(publicacion)){
+            vendedor.getMuro().getListPublicaciones().add(publicacion);
+            return true;
+
+        }
+        return false;
+
     }
 
     @Override
@@ -281,6 +284,22 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
         return false;
     }
 
+    /**
+     * Metodo para verificar la existencia de una publicacion
+     */
+
+    public boolean publicacionExiste(Publicacion publicacion) {
+        for (Vendedor vendedor : vendedores) {
+            for (Publicacion publi : vendedor.getMuro().listPublicaciones) {
+                if (publi.getProductoPublicado() == publicacion.getProductoPublicado()) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
+
 //----------------------------------------GETTERS Y SETTERS------------------------------------------------------------------
 
     public List<Usuario> getUsuarios() {
@@ -289,5 +308,9 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
     public List<Vendedor> getVendedores() {
         return vendedores;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }

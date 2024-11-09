@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
@@ -244,10 +243,172 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <SplitPane dividerPositions="0.29797979797979796" layoutX="7.0" layoutY="4.0" prefHeight="429.0" prefWidth="753.0" style="-fx-background-color: gray;">
+                                          <SplitPane dividerPositions="0.29161118508655126" layoutX="7.0" layoutY="4.0" prefHeight="429.0" prefWidth="753.0" style="-fx-background-color: gray;">
                                             <items>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="488.0" />
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="326.0">
+                                                   <children>
+                                                      <VBox prefHeight="428.0" prefWidth="221.0">
+                                                         <children>
+                                                            <HBox prefHeight="41.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="5.0" layoutY="3.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="41.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="7.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="43.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="42.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="5.0" layoutY="4.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="5.0" layoutY="3.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="46.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="7.0" layoutY="6.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="43.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="7.0" layoutY="4.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="47.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="5.0" layoutY="6.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="51.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="5.0" layoutY="8.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox prefHeight="45.0" prefWidth="221.0" style="-fx-background-color: #5d6d7e;">
+                                                               <children>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="190.0" style="-fx-background-color: #5d6d7e;" text="Button" textFill="WHITE">
+                                                                           <font>
+                                                                              <Font name="Berlin Sans FB" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children></AnchorPane>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="424.0" prefWidth="375.0">
+                                                   <children>
+                                                      <VBox prefHeight="42.0" prefWidth="533.0" style="-fx-background-color: #5d6d7e;">
+                                                         <children>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Label layoutX="50.0" layoutY="10.0" text="LabelUser" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Berlin Sans FB" size="20.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox layoutY="366.0" prefHeight="61.0" prefWidth="532.0" style="-fx-background-color: #5d6d7e;">
+                                                         <children>
+                                                            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <Button layoutX="411.0" layoutY="7.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #7#cacfd27d7d;" text="Enviar Mensaje" />
+                                                                  <TextField layoutX="9.0" layoutY="8.0" prefHeight="35.0" prefWidth="393.0" promptText="Escribe algo..." />
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
                                             </items>
                                           </SplitPane>
                                        </children></AnchorPane>
@@ -309,7 +470,7 @@
                                                       </VBox>
                                                       <TextField fx:id="txtCategoriaNuevoProducto" layoutX="199.0" layoutY="45.0" promptText="Añade una categoria" />
                                                       <TextField fx:id="txtNombreNuevoProducto" layoutX="26.0" layoutY="45.0" promptText="Nombre del producto" />
-                                                      <Button fx:id="btnPublicarProducto" layoutX="542.0" layoutY="45.0" mnemonicParsing="false" onAction="#onCrearPublicacion" style="-fx-background-color: #5d6d7e;" text="Publicar" textFill="WHITE" />
+                                                      <Button fx:id="btnPublicarProducto" layoutX="673.0" layoutY="45.0" mnemonicParsing="false" onAction="#onCrearPublicacion" style="-fx-background-color: #5d6d7e;" text="Publicar" textFill="WHITE" />
                                                       <TextField fx:id="txtPrecioNuevoProducto" layoutX="370.0" layoutY="45.0" promptText="Añade un precio" />
                                                       <Label layoutX="26.0" layoutY="14.0" text="CREAR PUBLICACIÓN">
                                                          <font>
@@ -322,6 +483,7 @@
                                                          </font>
                                                       </Label>
                                                       <Separator layoutX="-5.0" layoutY="88.0" prefHeight="6.0" prefWidth="750.0" />
+                                                      <TextField fx:id="txtDescripcionPublicacionnueva" layoutX="539.0" layoutY="45.0" prefHeight="25.0" prefWidth="103.0" promptText="Descripcion" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -341,7 +503,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text=" Aliado 1">
+          <Tab text=" Aliado ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -365,26 +527,60 @@
                         <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
                         <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
                         <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="398.0" prefWidth="345.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Sus Productos">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="345.0">
+                                       <children>
+                                          <VBox layoutX="-4.0" prefHeight="369.0" prefWidth="351.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="92.0" prefWidth="345.0">
+                                                         <children>
+                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+                                                            <Label layoutX="134.0" layoutY="14.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="92.0" prefWidth="346.0">
+                                                         <children>
+                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+                                                            <Label layoutX="136.0" layoutY="14.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="92.0" prefWidth="346.0">
+                                                         <children>
+                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="93.0" prefWidth="347.0">
+                                                         <children>
+                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                             <Tab text="Productos de contactos">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </Tab>
                           </tabs>
@@ -415,685 +611,11 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text=" Aliado 2">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace11" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="35.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 3">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 4">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace1111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 5">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace11111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 6">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace111111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 7">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace1111111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 8">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace11111111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 9">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace111111111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text=" Aliado 10">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="14.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="368.0" prefWidth="341.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Sus Productos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Productos de contactos">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Pagination layoutY="6.0" prefHeight="334.0" prefWidth="343.0" />
-                                          <Separator layoutX="-25.0" layoutY="139.0" prefHeight="4.0" prefWidth="366.0" />
-                                          <TextField layoutX="90.0" layoutY="106.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="106.0" mnemonicParsing="false" text="like" />
-                                          <TextField layoutX="90.0" layoutY="244.0" promptText="Comentar publicacion" />
-                                          <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" text="like" />
-                                          <Separator layoutX="-11.0" layoutY="285.0" prefHeight="4.0" prefWidth="366.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace1111111111" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
         </tabs>
       </TabPane>
-      <Button fx:id="btnCerrarSesion" layoutX="660.0" layoutY="543.0" mnemonicParsing="false" onAction="#onCerrarSesion" style="-fx-background-color: #2b94c8;" text="CERRAR SESION" />
-      <Button fx:id="btnOpenWindow3" layoutX="491.0" layoutY="543.0" mnemonicParsing="false" onAction="#onOpenWindow3" style="-fx-background-color: #2b94c8;" text="ESTADISTICAS DE LA RED" />
-      <Separator layoutX="32.0" orientation="VERTICAL" prefHeight="532.0" prefWidth="11.0" />
+      <Button fx:id="btnCerrarSesion" layoutX="660.0" layoutY="556.0" mnemonicParsing="false" onAction="#onCerrarSesion" style="-fx-background-color: #2b94c8;" text="CERRAR SESION" />
+      <Button fx:id="btnOpenWindow3" layoutX="491.0" layoutY="556.0" mnemonicParsing="false" onAction="#onOpenWindow3" style="-fx-background-color: #2b94c8;" text="ESTADISTICAS DE LA RED" />
+      <Separator layoutX="32.0" orientation="VERTICAL" prefHeight="540.0" prefWidth="10.0" />
+      <Separator layoutX="38.0" layoutY="542.0" prefHeight="2.0" prefWidth="769.0" />
    </children>
 </AnchorPane>

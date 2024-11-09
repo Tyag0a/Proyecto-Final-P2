@@ -40,4 +40,5 @@ public class Usuario {
     public static UsuarioBuilder builder() {
         return new UsuarioBuilder();
     }
+
 }

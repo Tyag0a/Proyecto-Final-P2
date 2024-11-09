@@ -2,7 +2,13 @@ package co.edu.uniquindio.marketplace.viewcontroller;
 
 import co.edu.uniquindio.marketplace.controller.MuroController;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.marketplace.factory.ModelFactory;
+import co.edu.uniquindio.marketplace.mapping.dto.PublicacionDto;
+import co.edu.uniquindio.marketplace.model.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,6 +22,7 @@ import javafx.scene.text.TextFlow;
 public class MuroViewController {
 
     static MuroController muroController;
+    static ModelFactory modelFactory;
 
     @FXML
     private ResourceBundle resources;
@@ -261,6 +268,9 @@ public class MuroViewController {
     private TextField txtUsuarioBuscado;
 
     @FXML
+    private TextField txtDescripcionPublicacionnueva;
+
+    @FXML
     private TextFlow txtflowDescripcionPublicacion1;
 
     @FXML
@@ -326,6 +336,7 @@ public class MuroViewController {
 
     @FXML
     void onCrearPublicacion(ActionEvent event) {
+        crearPublicacion();
 
     }
 
@@ -336,6 +347,11 @@ public class MuroViewController {
 
     @FXML
     void initialize() {
+
+        muroController = new MuroController();
+
+        initView();
+
         assert btnAgregarSugerencia1 != null : "fx:id=\"btnAgregarSugerencia1\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert btnAgregarSugerencia2 != null : "fx:id=\"btnAgregarSugerencia2\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert btnAgregarSugerencia3 != null : "fx:id=\"btnAgregarSugerencia3\" was not injected: check your FXML file 'muro-view.fxml'.";
@@ -429,6 +445,27 @@ public class MuroViewController {
         assert vboxPublicacion2 != null : "fx:id=\"vboxPublicacion2\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert vboxPublicacion3 != null : "fx:id=\"vboxPublicacion3\" was not injected: check your FXML file 'muro-view.fxml'.";
 
+    }
+
+    private void initView() {
+        inicializarData();
+
+    }
+
+    public void crearPublicacion() {
+    }
+
+    public void inicializarData(){
+
+    }
+
+    public PublicacionDto crearPubliDto (){
+        Producto producto = crearProducto();
+        return new PublicacionDto(LocalDate.now(), LocalDateTime.now(),txtDescripcionPublicacionnueva.getText(),producto);
+    }
+
+    private Producto crearProducto() {
+        return null;
     }
 
 }

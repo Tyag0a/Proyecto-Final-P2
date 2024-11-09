@@ -14,6 +14,10 @@ public class Publicacion {
     Collection<Vendedor> listaLikesVendedor;
     Producto productoPublicado;
     String descripcionPublicacion;
+    String idvendedor;
+
+    public Publicacion() {
+    }
 
     public Publicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion, Producto productoPublicado, String descripcionPublicacion) {
         this.fechaPublicacion = fechaPublicacion;

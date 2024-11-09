@@ -59,4 +59,13 @@ public class Vendedor extends Persona {
         this.listChats = listChats;
     }
 
+    @Override
+    public void setApellido(String apellido) {
+        super.setApellido(apellido);
+    }
+
+    @Override
+    public String getApellido() {
+        return super.getApellido();
+    }
 }

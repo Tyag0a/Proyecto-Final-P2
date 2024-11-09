@@ -1,13 +1,7 @@
 package co.edu.uniquindio.marketplace.mapping.mappers;
 
-import co.edu.uniquindio.marketplace.mapping.dto.AdministradorDto;
-import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
-import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
-import co.edu.uniquindio.marketplace.model.Administrador;
-import co.edu.uniquindio.marketplace.model.Producto;
-import co.edu.uniquindio.marketplace.model.Usuario;
-import co.edu.uniquindio.marketplace.model.Vendedor;
+import co.edu.uniquindio.marketplace.mapping.dto.*;
+import co.edu.uniquindio.marketplace.model.*;
 import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
 
 import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
@@ -112,6 +106,31 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
     @Override
     public Vendedor vendedorDtoToVendedor(VendedorDto vendedorDto) {
         return Vendedor.builder().setNombre(vendedorDto.nombre()).setApellido(vendedorDto.apellido()).setCedula(vendedorDto.cedula()).setDireccion(vendedorDto.direccion()).setUsuarioAsociado(vendedorDto.usuarioAsociado()).build();
+    }
+
+    @Override
+    public List<PublicacionDto> getPublicacionDto(List<Publicacion> listaPublicaciones) {
+        return List.of();
+    }
+
+    @Override
+    public PublicacionDto publicacionToPublicacionDto(Publicacion publicacion) {
+        return new PublicacionDto(
+                publicacion.getFechaPublicacion(),
+                publicacion.getHoraPublicacion(),
+                publicacion.getDescripcionPublicacion(),
+                publicacion.getProductoPublicado()
+        );
+    }
+
+    @Override
+    public Publicacion publicacionDtoToPublicacion(PublicacionDto publicacionDto) {
+        return new Publicacion(
+                publicacionDto.fechaPublicacion(),
+                publicacionDto.horaPublicacion(),
+                publicacionDto.producto(),
+                publicacionDto.descripcion()
+        );
     }
 }
 

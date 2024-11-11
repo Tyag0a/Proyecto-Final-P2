@@ -78,7 +78,7 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
 
     @Override
     public UsuarioDto usuarioToUsuarioDto(Usuario usuario) {
-        return new UsuarioDto(usuario.getNombreUsuario(), usuario.getContraseña());
+        return new UsuarioDto(usuario.getNombreUsuario(), usuario.getContraseña(),usuario.getPersonaAsociada());
     }
 
     @Override

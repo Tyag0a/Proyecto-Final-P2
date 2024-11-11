@@ -6,5 +6,5 @@ import co.edu.uniquindio.marketplace.model.Publicacion;
 
 public interface IMuroControllerService {
 
-    public boolean agregarPublicacion (PublicacionDto publicacion, VendedorDto vendedor);
+    public boolean agregarPublicacion (PublicacionDto publicacion);
 }

@@ -1,34 +1,58 @@
 package co.edu.uniquindio.marketplace.viewcontroller;
 
 import co.edu.uniquindio.marketplace.controller.MuroController;
+
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.marketplace.controller.SessionManager;
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.mapping.dto.PublicacionDto;
-import co.edu.uniquindio.marketplace.model.Producto;
+import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
+import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
+import co.edu.uniquindio.marketplace.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class MuroViewController {
+    private UsuarioDto usuario;
 
     static MuroController muroController;
     static ModelFactory modelFactory;
+    private SessionManager sessionManager = SessionManager.getInstance();
+
+    private ImageView imageViewPublicacion = new ImageView();
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private AnchorPane anchorPaneHome;
+
+
+    @FXML
+    private AnchorPane anchorPaneMisPublicaciones;
 
     @FXML
     private Button btnAgregarSugerencia1;
@@ -50,6 +74,9 @@ public class MuroViewController {
 
     @FXML
     private Button btnCerrarSesion;
+
+    @FXML
+    private Button btnCargarImagen;
 
     @FXML
     private Button btnComentar;
@@ -241,6 +268,12 @@ public class MuroViewController {
     private Label lblUsuarioSugerido5;
 
     @FXML
+    private ScrollPane scrollPaneHome;
+
+    @FXML
+    private ScrollPane scrollPaneMisPublicaciones;
+
+    @FXML
     private TextField txtCategoriaNuevoProducto;
 
     @FXML
@@ -309,6 +342,14 @@ public class MuroViewController {
     @FXML
     private VBox vboxPublicacion3;
 
+
+    @FXML
+    void cargarImagenDesdePC(ActionEvent event) {
+        chooserImage();
+
+    }
+
+
     @FXML
     void onAgregarAmistad(ActionEvent event) {
 
@@ -349,8 +390,11 @@ public class MuroViewController {
     void initialize() {
 
         muroController = new MuroController();
+        Vendedor vendedor = sessionManager.getVendedor();
 
         initView();
+
+        mostrarDataInicializada();
 
         assert btnAgregarSugerencia1 != null : "fx:id=\"btnAgregarSugerencia1\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert btnAgregarSugerencia2 != null : "fx:id=\"btnAgregarSugerencia2\" was not injected: check your FXML file 'muro-view.fxml'.";
@@ -448,14 +492,234 @@ public class MuroViewController {
     }
 
     private void initView() {
-        inicializarData();
 
+        if (usuario != null) {
+            Vendedor vendedor = (Vendedor) usuario.personaAsociada();
+        } else {
+            System.err.println("Usuario no inicializado en MuroController");
+        }
+
+    }
+
+    public VBox crearPublicacionVBox() {
+
+        // Crea el VBox para la publicación
+        VBox nuevaPublicacionVBox = new VBox();
+        nuevaPublicacionVBox.setStyle("-fx-background-color: #bdc3c7");
+        nuevaPublicacionVBox.setPrefWidth(742);
+        nuevaPublicacionVBox.setPrefHeight(149);
+
+        // AnchorPane dentro del VBox
+        AnchorPane nuevaPublicacionPane = new AnchorPane();
+        nuevaPublicacionPane.setPrefWidth(742);
+        nuevaPublicacionPane.setPrefHeight(149);
+        nuevaPublicacionPane.setStyle("-fx-background-color: #bdc3c7");
+        nuevaPublicacionVBox.getChildren().add(nuevaPublicacionPane);
+
+        imageViewPublicacion.setLayoutX(14);
+        imageViewPublicacion.setLayoutY(13);
+        imageViewPublicacion.setFitHeight(110);
+        imageViewPublicacion.setFitWidth(191);
+        imageViewPublicacion.setPreserveRatio(true);
+
+        // Elementos de la publicación
+        Label labelNameUser = new Label(usuario.nombreUsuario());
+        labelNameUser.setLayoutX(236);
+        labelNameUser.setLayoutY(14);
+        labelNameUser.setFont(Font.font("Berlin Sans FB", 18));
+
+        Label labelFechaNuevaPublicacion = new Label(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        labelFechaNuevaPublicacion.setLayoutX(356);
+        labelFechaNuevaPublicacion.setLayoutY(16);
+
+        Label labelNuevaHoraPublicacion = new Label(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        labelNuevaHoraPublicacion.setLayoutX(466);
+        labelNuevaHoraPublicacion.setLayoutY(16);
+
+        Label labelNombreNuevoProducto = new Label(txtNombreNuevoProducto.getText());
+        labelNombreNuevoProducto.setLayoutX(542);
+        labelNombreNuevoProducto.setLayoutY(16);
+
+        Label labelPrecioNuevoProducto = new Label("Precio: "+ txtPrecioNuevoProducto.getText());
+        labelPrecioNuevoProducto.setLayoutX(648);
+        labelPrecioNuevoProducto.setLayoutY(16);
+
+        Button buttonLikeNuevaPubli = new Button("Like");
+        buttonLikeNuevaPubli.setLayoutX(478);
+        buttonLikeNuevaPubli.setLayoutY(81);
+        buttonLikeNuevaPubli.setStyle("-fx-background-color: #5d6d7e");
+        buttonLikeNuevaPubli.setPrefWidth(37);
+        buttonLikeNuevaPubli.setPrefHeight(25);
+
+        TextField txtComentarioNuevaPublicacion = new TextField();
+        txtComentarioNuevaPublicacion.setLayoutX(522);
+        txtComentarioNuevaPublicacion.setLayoutY(81);
+        txtComentarioNuevaPublicacion.setPrefWidth(132);
+        txtComentarioNuevaPublicacion.setPrefHeight(25);
+        txtComentarioNuevaPublicacion.setPromptText("Escribe un comentario");
+
+        Button buttonComentarNuevaPublicacion = new Button("Comentar");
+        buttonComentarNuevaPublicacion.setLayoutX(659);
+        buttonComentarNuevaPublicacion.setLayoutY(81);
+        buttonComentarNuevaPublicacion.setPrefWidth(69);
+        buttonComentarNuevaPublicacion.setPrefHeight(25);
+        buttonComentarNuevaPublicacion.setStyle("-fx-background-color: #5d6d7e");
+
+        TextFlow txtFlowDescripcionNuevaPublicacion = new TextFlow();
+        txtFlowDescripcionNuevaPublicacion.setLayoutX(229);
+        txtFlowDescripcionNuevaPublicacion.setLayoutY(48);
+        txtFlowDescripcionNuevaPublicacion.setPrefHeight(68);
+        txtFlowDescripcionNuevaPublicacion.setPrefWidth(163);
+        Text textoDescripcion = new Text(txtDescripcionPublicacionnueva.getText());
+        txtFlowDescripcionNuevaPublicacion.getChildren().add(textoDescripcion);
+
+        nuevaPublicacionPane.getChildren().addAll(labelNameUser, labelFechaNuevaPublicacion,
+                labelNuevaHoraPublicacion, labelNombreNuevoProducto,
+                buttonLikeNuevaPubli, txtComentarioNuevaPublicacion,
+                buttonComentarNuevaPublicacion, txtFlowDescripcionNuevaPublicacion,labelPrecioNuevoProducto);
+        nuevaPublicacionPane.getChildren().add(imageViewPublicacion);
+
+
+
+        return nuevaPublicacionVBox;
     }
 
     public void crearPublicacion() {
+
+        if (txtCategoriaNuevoProducto.getText().isEmpty() ||
+                txtNombreNuevoProducto.getText().isEmpty() ||
+                txtDescripcionPublicacionnueva.getText().isEmpty() ||
+                txtPrecioNuevoProducto.getText().isEmpty()) {
+            mostrarAlertaError();
+
+        }
+
+        if (!esNumeroValido(txtPrecioNuevoProducto.getText())) {
+            mostrarAlertaDouble("Advertencia", "Entrada inválida", "Por favor, ingresa un precio válido.");
+        }
+        muroController.agregarPublicacion(crearPubliDto());
+
+        // Crea la publicación para los dos contenedores
+        VBox nuevaPublicacionVBox1 = crearPublicacionVBox();
+        VBox nuevaPublicacionVBox2 = crearPublicacionVBox();
+
+        // Agrega la publicación al primer contenedor
+        vboxContainerprincipal.getChildren().add(nuevaPublicacionVBox1);
+        double alturaActualPrincipal = vboxContainerprincipal.getPrefHeight();
+        vboxContainerprincipal.setPrefHeight(alturaActualPrincipal + 149);
+        anchorPaneHome.setPrefHeight(vboxContainerprincipal.getPrefHeight());
+        scrollPaneHome.setVvalue(1.0);
+        vboxContainerprincipal.setSpacing(11);
+
+        // Agrega la publicación al segundo contenedor (Mis Publicaciones)
+        vboxContainerMisPublicaciones.getChildren().add(nuevaPublicacionVBox2);
+        double alturaActualMisPublicaciones = vboxContainerMisPublicaciones.getPrefHeight();
+        vboxContainerMisPublicaciones.setPrefHeight(alturaActualMisPublicaciones + 149);
+        anchorPaneMisPublicaciones.setPrefHeight(vboxContainerMisPublicaciones.getPrefHeight());
+        scrollPaneMisPublicaciones.setVvalue(1.0);
+        vboxContainerMisPublicaciones.setSpacing(11);
     }
 
-    public void inicializarData(){
+
+    public void mostrarDataInicializada(){
+
+        Marketplace marketplace = muroController.inicializarData();
+
+        for (Vendedor vendedor : marketplace.getVendedores()){
+            Collection<Publicacion> publicaciones = vendedor.getMuro().getListPublicaciones();
+
+            for (Publicacion publicacion : publicaciones){
+
+                VBox nuevaPublicacioninitVBox = new VBox();
+                nuevaPublicacioninitVBox.setStyle("-fx-background-color: #bdc3c7");
+                nuevaPublicacioninitVBox.setPrefWidth(742);
+                nuevaPublicacioninitVBox.setPrefHeight(148);
+
+                AnchorPane nuevaPublicacioninitPane = new AnchorPane();
+                nuevaPublicacioninitPane.setPrefWidth(742);
+                nuevaPublicacioninitPane.setPrefHeight(148);
+                nuevaPublicacioninitPane.setStyle("-fx-background-color: #bdc3c7");
+                nuevaPublicacioninitVBox.getChildren().add(nuevaPublicacioninitPane);
+
+                Image imagenProducto = new Image(Objects.requireNonNull(getClass().getResourceAsStream(publicacion.getProductoPublicado().getRutaImagen())));
+                ImageView imageinitProducto = new ImageView();
+                imageinitProducto.setImage(imagenProducto);
+                imageinitProducto.setLayoutX(14);
+                imageinitProducto.setLayoutY(13);
+                imageinitProducto.setFitHeight(110);
+                imageinitProducto.setFitWidth(191);
+                imageinitProducto.setPreserveRatio(true);
+
+                Label labelNameUser = new Label();
+                labelNameUser.setText(vendedor.getNombre());
+                labelNameUser.setLayoutX(236);
+                labelNameUser.setLayoutY(14);
+                labelNameUser.setFont(Font.font("Berlin Sans FB", 18));
+
+                Label labelFechainitPublicacion = new Label(publicacion.getFechaPublicacion().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                labelFechainitPublicacion.setLayoutX(356);
+                labelFechainitPublicacion.setLayoutY(16);
+
+                Label labelinitHoraPublicacion = new Label(publicacion.getHoraPublicacion().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+                labelinitHoraPublicacion.setLayoutX(466);
+                labelinitHoraPublicacion.setLayoutY(16);
+
+                Label labelNombreinitProducto = new Label(publicacion.getProductoPublicado().getNombre());
+                labelNombreinitProducto.setLayoutX(542);
+                labelNombreinitProducto.setLayoutY(16);
+
+                double precio = publicacion.getProductoPublicado().getPrecio();
+                String precioString = String.format("%.2f", precio);
+                Label labelPrecioinitProducto = new Label("Precio: "+ precioString );
+                labelPrecioinitProducto.setLayoutX(648);
+                labelPrecioinitProducto.setLayoutY(16);
+
+                Button buttonLikeinitPubli = new Button("Like");
+                buttonLikeinitPubli.setLayoutX(478);
+                buttonLikeinitPubli.setLayoutY(81);
+                buttonLikeinitPubli.setStyle("-fx-background-color: #5d6d7e");
+                buttonLikeinitPubli.setPrefWidth(37);
+                buttonLikeinitPubli.setPrefHeight(25);
+
+                TextField txtComentarioinitPublicacion = new TextField();
+                txtComentarioinitPublicacion.setLayoutX(522);
+                txtComentarioinitPublicacion.setLayoutY(81);
+                txtComentarioinitPublicacion.setPrefWidth(132);
+                txtComentarioinitPublicacion.setPrefHeight(25);
+                txtComentarioinitPublicacion.setPromptText("Escribe un comentario");
+
+                Button buttonComentarinitPublicacion = new Button("Comentar");
+                buttonComentarinitPublicacion.setLayoutX(659);
+                buttonComentarinitPublicacion.setLayoutY(81);
+                buttonComentarinitPublicacion.setPrefWidth(69);
+                buttonComentarinitPublicacion.setPrefHeight(25);
+                buttonComentarinitPublicacion.setStyle("-fx-background-color: #5d6d7e");
+
+                TextFlow txtFlowDescripcioninitPublicacion = new TextFlow();
+                txtFlowDescripcioninitPublicacion.setLayoutX(229);
+                txtFlowDescripcioninitPublicacion.setLayoutY(48);
+                txtFlowDescripcioninitPublicacion.setPrefHeight(68);
+                txtFlowDescripcioninitPublicacion.setPrefWidth(163);
+                String descripcion = publicacion.getDescripcionPublicacion();
+                Text textoDescripcion = new Text(descripcion);
+                txtFlowDescripcioninitPublicacion.getChildren().clear();
+                txtFlowDescripcioninitPublicacion.getChildren().add(textoDescripcion);
+
+                nuevaPublicacioninitPane.getChildren().addAll(imageinitProducto,labelNameUser,labelFechainitPublicacion,labelinitHoraPublicacion,labelNombreinitProducto,buttonLikeinitPubli,txtComentarioinitPublicacion,buttonComentarinitPublicacion,txtFlowDescripcioninitPublicacion,labelPrecioinitProducto);
+                vboxContainerprincipal.getChildren().add(nuevaPublicacioninitVBox);
+
+                double alturaActualPrincipal = vboxContainerprincipal.getPrefHeight();
+                vboxContainerprincipal.setPrefHeight(alturaActualPrincipal + 149);
+                anchorPaneHome.setPrefHeight(vboxContainerprincipal.getPrefHeight());
+                scrollPaneHome.setVvalue(1.0);
+                vboxContainerprincipal.setSpacing(11);
+
+
+            }
+
+        }
+
+
 
     }
 
@@ -464,8 +728,73 @@ public class MuroViewController {
         return new PublicacionDto(LocalDate.now(), LocalDateTime.now(),txtDescripcionPublicacionnueva.getText(),producto);
     }
 
-    private Producto crearProducto() {
-        return null;
+    public VendedorDto crearVendedorDto(){
+        return new VendedorDto(usuario.personaAsociada().getNombre(),usuario.personaAsociada().getApellido(),usuario.personaAsociada().getCedula(),usuario.personaAsociada().getCedula(),usuario.personaAsociada().getUsuarioAsociado());
     }
 
-}
+    private Producto crearProducto() {
+        String textoPrecio = txtPrecioNuevoProducto.getText();
+        double precio;
+        precio = Double.parseDouble(textoPrecio);
+
+        return new Producto(txtNombreNuevoProducto.getText(),
+                "",txtCategoriaNuevoProducto.getText(),precio, EstadoProducto.PUBLICADO);
+    }
+
+    public void setUsuario(UsuarioDto usuario) {
+        this.usuario = usuario;
+        initView();
+    }
+
+    private void mostrarAlertaError() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Info crear publicacion");
+        alert.setHeaderText(null);
+        alert.setContentText("Por favor completa la informacion solicitada para crear la publicacion.");
+        alert.showAndWait();
+    }
+
+    private static boolean esNumeroValido(String texto) {
+        try {
+            Double.parseDouble(texto);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+
+    }
+
+    private static void mostrarAlertaDouble(String titulo, String encabezado, String contenido) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(encabezado);
+        alerta.setContentText(contenido);
+        alerta.showAndWait();
+    }
+
+    public void chooserImage() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar Imagen para publicacion");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Archivos de Imagen", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        File archivoSeleccionado = fileChooser.showOpenDialog(new Stage());
+        if (archivoSeleccionado != null) {
+            try {
+                Image imagen = new Image(archivoSeleccionado.toURI().toString());
+                imageViewPublicacion.setImage(imagen);
+                imageViewPublicacion.setFitHeight(100); // Ajusta el tamaño si es necesario
+                imageViewPublicacion.setFitWidth(100); // Ajusta el tamaño si es necesario
+            } catch (Exception e) {
+                Alert alertaError = new Alert(Alert.AlertType.ERROR);
+                alertaError.setTitle("Error al cargar imagen");
+                alertaError.setContentText("Hubo un problema al cargar la imagen seleccionada.");
+                alertaError.showAndWait();
+            }
+        }
+    }
+
+
+  }

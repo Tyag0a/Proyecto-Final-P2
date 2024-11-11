@@ -24,6 +24,6 @@ public class UsuarioBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(nombreUsuario, contraseña);
+        return new Usuario(nombreUsuario, contraseña, personaAsociada);
     }
 }

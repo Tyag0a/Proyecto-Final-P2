@@ -10,4 +10,6 @@ module co.edu.uniquindio.co {
     opens co.edu.uniquindio.marketplace.controller to javafx.fxml;
     opens co.edu.uniquindio.marketplace.viewcontroller to javafx.fxml;
     exports co.edu.uniquindio.marketplace.mapping.dto;
+    exports co.edu.uniquindio.marketplace.model;
+    exports co.edu.uniquindio.marketplace.factory;
 }

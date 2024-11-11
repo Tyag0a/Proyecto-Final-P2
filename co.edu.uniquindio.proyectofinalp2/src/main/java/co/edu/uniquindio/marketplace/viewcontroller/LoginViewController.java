@@ -8,9 +8,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.marketplace.controller.MuroController;
+import co.edu.uniquindio.marketplace.controller.SessionManager;
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
+import co.edu.uniquindio.marketplace.mapping.mappers.MarketplaceMappingImpl;
+import co.edu.uniquindio.marketplace.model.Persona;
+import co.edu.uniquindio.marketplace.model.Vendedor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,8 @@ import javax.swing.*;
 public class LoginViewController {
     LoginController loginController;
     private ModelFactory modelFactory;
+    private SessionManager sessionManager = SessionManager.getInstance();
+    MarketplaceMappingImpl mapping = new MarketplaceMappingImpl();
 
     @FXML
     private ResourceBundle resources;
@@ -92,11 +98,13 @@ public class LoginViewController {
         login();
     }
 
+
     @FXML
     void initialize() {
-
-        loginController = new LoginController();
         initView();
+        loginController = new LoginController();
+
+
 
         assert btnCrearCuenta != null : "fx:id=\"btnCrearCuenta\" was not injected: check your FXML file 'login-view.fxml'.";
         assert btnLogin != null : "fx:id=\"btnLogin\" was not injected: check your FXML file 'login-view.fxml'.";
@@ -116,6 +124,7 @@ public class LoginViewController {
         assert txtNuevoNombreVendedor != null : "fx:id=\"txtNuevoNombreVendedor\" was not injected: check your FXML file 'login-view.fxml'.";
 
     }
+
 
     private void initView() {
 
@@ -138,6 +147,7 @@ public class LoginViewController {
         if (loginController.validarUsuario(userDto)) {
             openWindow2(userDto);
 
+
         }
         else {
             JOptionPane.showMessageDialog(null,"Por favor ingrese de nuevo sus datos, ha ocurrido un error en la validación.");
@@ -154,6 +164,8 @@ public class LoginViewController {
         Scene scene = new Scene(fxmlLoader.load(),806,588);
         Stage stage = new Stage();
         //MuroController w2Controller = fxmlLoader.getController();
+        MuroViewController muroController = fxmlLoader.getController();
+        muroController.setUsuario(userDto);
 
         stage.setScene(scene);
         stage.setTitle("Sesion iniciada como " + userDto.nombreUsuario());
@@ -162,6 +174,8 @@ public class LoginViewController {
         stageCerrar.close();
 
         stage.show();
+
+
 
 
 
@@ -185,6 +199,9 @@ public class LoginViewController {
             Scene scene = new Scene(fxmlLoader.load(),806,588);
             Stage stage = new Stage();
 
+            MuroViewController muroController = fxmlLoader.getController();
+            muroController.setUsuario(mapping.usuarioToUsuarioDto(newVendedorDto.usuarioAsociado()));
+
             stage.setScene(scene);
             stage.setTitle("Sesion iniciada como " + newVendedorDto.usuarioAsociado().getNombreUsuario());
 
@@ -192,6 +209,7 @@ public class LoginViewController {
             stageCerrar.close();
 
             stage.show();
+
 
 
         }
@@ -211,14 +229,20 @@ public class LoginViewController {
     }
 
     public UsuarioDto crearUserDto(){
+       // Vendedor v = loginController.obtenerVendedorPorUsuario(txtNombreUsuario.getText(),txtContraseñaUser.getText());
         return new UsuarioDto(txtNombreUsuario.getText(),
-                txtContraseñaUser.getText());
+                txtContraseñaUser.getText(),null);
     }
 
     public Usuario crearNuevoUser(){
-        return new Usuario(txtNuevoNombreUser.getText(),txtNuevaContraseñaUser.getText());
+        return new Usuario(txtNuevoNombreUser.getText(),txtNuevaContraseñaUser.getText(),crearVendedor());
 
     }
+
+    public Vendedor crearVendedor (){
+        return new Vendedor(txtNuevoNombreVendedor.getText(),txtNuevoApellidoVendedor.getText(),txtNuevaCedulaVendedor.getText(),txtNuevaDireccionVendedor.getText(),null);
+    }
+
 
     /*
      *  Metodo para mostrar una alerta cuando se ingresan campos vacíos
@@ -227,8 +251,9 @@ public class LoginViewController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText("Error al completar la acción.\n Por favor, llena los campos indicados para continuar.");
+        alert.setContentText("Error al completar la acción. Por favor, llena los campos indicados para continuar.");
         alert.showAndWait();
     }
+
 
 }

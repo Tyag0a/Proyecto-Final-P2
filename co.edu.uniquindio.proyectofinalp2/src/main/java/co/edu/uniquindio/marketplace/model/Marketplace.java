@@ -76,8 +76,8 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
     }
 
     @Override
-    public String crearUsuario(String nombreUsuario, String contraseña) {
-        Usuario usuario = new Usuario(nombreUsuario, contraseña);
+    public String crearUsuario(String nombreUsuario, String contraseña, Persona personaAsociada) {
+        Usuario usuario = new Usuario(nombreUsuario, contraseña,personaAsociada);
         usuarios.add(usuario);
         return "Usuario creado: " + nombreUsuario;
     }
@@ -124,7 +124,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
         if (newVendedor != null) {
             vendedores.add(newVendedor);
-            crearUsuario(newVendedor.usuarioAsociado.getNombreUsuario(),newVendedor.usuarioAsociado.getContraseña());
+            crearUsuario(newVendedor.usuarioAsociado.getNombreUsuario(),newVendedor.usuarioAsociado.getContraseña(),newVendedor);
             return true;
 
         }
@@ -209,9 +209,9 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
                 .orElse(null);
     }
     @Override
-    public boolean crearPublicacion(Publicacion publicacion, Vendedor vendedor)  {
+    public boolean crearPublicacion(Publicacion publicacion)  {
         if(publicacionExiste(publicacion)){
-            vendedor.getMuro().getListPublicaciones().add(publicacion);
+            publicaciones.add(publicacion);
             return true;
 
         }
@@ -264,6 +264,15 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
         }
         return false;
+    }
+
+    public Vendedor obtenerVendedorPorUsuario(String nombreUsuario, String contraseña) {
+        for (Vendedor vendedor : vendedores) {
+            if (vendedor.getUsuarioAsociado().getNombreUsuario().equals(nombreUsuario) && vendedor.getUsuarioAsociado().getContraseña().equals(contraseña)) {
+                return vendedor;
+            }
+        }
+        return null;
     }
 
     /**

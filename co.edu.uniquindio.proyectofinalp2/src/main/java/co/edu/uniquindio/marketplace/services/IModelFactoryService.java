@@ -6,5 +6,5 @@ import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 
 public interface IModelFactoryService {
     public boolean validarInicioSesion(UsuarioDto usuario);
-    public boolean agregarPublicacion(PublicacionDto publidto, VendedorDto vendedordto);
+    public boolean agregarPublicacion(PublicacionDto publidto);
 }

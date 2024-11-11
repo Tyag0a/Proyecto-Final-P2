@@ -23,7 +23,7 @@ public class Usuario {
 
     public void setPersonaAsociada(Persona personaAsociada) { this.personaAsociada = personaAsociada;}
 
-    private String nombreUsuario;
+    public String nombreUsuario;
     private String contraseña;
     Persona personaAsociada;
 
@@ -31,14 +31,19 @@ public class Usuario {
 
     }
 
-    public Usuario(String nombreUsuario, String contraseña) {
+    public Usuario(String nombreUsuario, String contraseña,Persona personaAsociada) {
         this.nombreUsuario = nombreUsuario;
         this.contraseña = contraseña;
-        this.personaAsociada = null;
+        this.personaAsociada = personaAsociada;
     }
 
     public static UsuarioBuilder builder() {
         return new UsuarioBuilder();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
 }

@@ -1,1 +1,95 @@
 Packpage para los recursos del proyecto
+
+
+
+----------------------------------respaldos----------------------------------------------------------------
+
+
+//    public void crearPublicacion() {
+//
+//        //vbox
+//        VBox nuevaPublicacionVBox = new VBox();
+//        nuevaPublicacionVBox.setStyle("-fx-background-color: #bdc3c7");
+//        nuevaPublicacionVBox.setPrefWidth(742);
+//        nuevaPublicacionVBox.setPrefHeight(149);
+//
+//        //anchorpane
+//        AnchorPane nuevaPublicacionPane = new AnchorPane();
+//        nuevaPublicacionPane.setPrefWidth(742);
+//        nuevaPublicacionPane.setPrefHeight(149);
+//        nuevaPublicacionPane.setStyle("-fx-background-color: #bdc3c7");
+//        nuevaPublicacionVBox.getChildren().add(nuevaPublicacionPane);
+//
+//        Label labelNameUser = new Label("jhon jairo");
+//        labelNameUser.setLayoutX(236);
+//        labelNameUser.setLayoutY(14);
+//        labelNameUser.setFont(Font.font("Berlin Sans FB",18));
+//
+//        Label labelFechaNuevaPublicacion = new Label(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+//        labelFechaNuevaPublicacion.setLayoutX(356);
+//        labelFechaNuevaPublicacion.setLayoutY(16);
+//
+//        Label labelNuevaHoraPublicacion = new Label(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+//        labelNuevaHoraPublicacion.setLayoutX(466);
+//        labelNuevaHoraPublicacion.setLayoutY(16);
+//
+//        Label labelNombreNuevoProducto = new Label("hola");
+//        labelNombreNuevoProducto.setLayoutX(542);
+//        labelNombreNuevoProducto.setLayoutY(16);
+//
+//        Button buttonLikeNuevaPubli = new Button("Like");
+//        buttonLikeNuevaPubli.setLayoutX(478);
+//        buttonLikeNuevaPubli.setLayoutY(81);
+//        buttonLikeNuevaPubli.setStyle("-fx-background-color:  #5d6d7e");
+//        buttonLikeNuevaPubli.setPrefWidth(37);
+//        buttonLikeNuevaPubli.setPrefHeight(25);
+//
+//        TextField txtComentarioNuevaPublicacion = new TextField();
+//        txtComentarioNuevaPublicacion.setLayoutX(522);
+//        txtComentarioNuevaPublicacion.setLayoutY(81);
+//        txtComentarioNuevaPublicacion.setPrefWidth(132);
+//        txtComentarioNuevaPublicacion.setPrefHeight(25);
+//        txtComentarioNuevaPublicacion.setPromptText("Escribe un comentario");
+//
+//        Button buttonComentarNuevaPublicacion = new Button("Comentar");
+//        buttonComentarNuevaPublicacion.setLayoutX(659);
+//        buttonComentarNuevaPublicacion.setLayoutY(81);
+//        buttonComentarNuevaPublicacion.setPrefWidth(69);
+//        buttonComentarNuevaPublicacion.setPrefHeight(25);
+//        buttonComentarNuevaPublicacion.setStyle("-fx-background-color:  #5d6d7e");
+//
+//        TextFlow txtFlowDescripcionNuevaPublicacion = new TextFlow();
+//        txtFlowDescripcionNuevaPublicacion.setLayoutX(229);
+//        txtFlowDescripcionNuevaPublicacion.setLayoutY(48);
+//        txtFlowDescripcionNuevaPublicacion.setPrefHeight(68);
+//        txtFlowDescripcionNuevaPublicacion.setPrefWidth(163);
+//
+//        nuevaPublicacionPane.getChildren().addAll(labelNameUser,labelFechaNuevaPublicacion,
+//                labelNuevaHoraPublicacion,labelNombreNuevoProducto,
+//                buttonLikeNuevaPubli,txtComentarioNuevaPublicacion,
+//                buttonComentarNuevaPublicacion,txtFlowDescripcionNuevaPublicacion);
+//
+//        vboxContainerprincipal.getChildren().add(nuevaPublicacionVBox);
+//
+//
+//        double alturaActual = vboxContainerprincipal.getPrefHeight();
+//        vboxContainerprincipal.setPrefHeight(alturaActual + 149);
+//
+//        anchorPaneHome.setPrefHeight(vboxContainerprincipal.getPrefHeight());
+//        scrollPaneHome.setVvalue(1.0);
+//
+//
+//        vboxContainerprincipal.setSpacing(11);
+//
+//    }
+
+    public Vendedor initVendedor() {
+        loginController = new LoginController();
+        initView();
+        Vendedor vendedor = loginController.obtenerVendedorPorUsuario(txtNombreUsuario.getText(),txtContraseñaUser.getText());
+        sessionManager.setVendedor(vendedor);
+        return vendedor;
+    }
+
+            Vendedor vendedor = sessionManager.getVendedor();
+            String nameUser = vendedor.getUsuarioAsociado().getNombreUsuario();

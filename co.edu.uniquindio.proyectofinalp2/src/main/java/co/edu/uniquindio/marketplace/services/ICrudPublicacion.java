@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public interface ICrudPublicacion {
-    boolean crearPublicacion(Publicacion publicacion, Vendedor vendedor) throws Exception;
+    boolean crearPublicacion(Publicacion publicacion) throws Exception;
     String eliminarPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception;
     String modificarPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception;
     Publicacion getPublicacion(LocalDate fechaPublicacion, LocalDateTime horaPublicacion,Producto producto, String descripcion) throws Exception;

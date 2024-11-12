@@ -166,6 +166,15 @@ public class ModelFactory implements IModelFactoryService {
         vendedor2.getMuro().getListPublicaciones().add(publicacion2);
         vendedor3.getMuro().getListPublicaciones().add(publicacion3);
 
+        Comentario comentario1 = new Comentario("Detalles y precio",usuario1);
+        publicacion1.getListaComentarios().add(comentario1);
+
+        Comentario comentario2 = new Comentario("lo quiero",usuario2);
+        publicacion2.getListaComentarios().add(comentario2);
+
+        Comentario comentario3 = new Comentario("Esta feota",usuario3);
+        publicacion3.getListaComentarios().add(comentario3);
+
 
 
 

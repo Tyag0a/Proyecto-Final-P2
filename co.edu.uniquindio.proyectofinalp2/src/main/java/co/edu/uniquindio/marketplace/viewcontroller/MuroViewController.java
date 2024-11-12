@@ -20,6 +20,7 @@ import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
@@ -39,7 +41,8 @@ public class MuroViewController {
     static ModelFactory modelFactory;
     private SessionManager sessionManager = SessionManager.getInstance();
 
-    private ImageView imageViewPublicacion = new ImageView();
+    private Image imageSeleccionada;
+
 
     @FXML
     private ResourceBundle resources;
@@ -503,26 +506,28 @@ public class MuroViewController {
 
     public VBox crearPublicacionVBox() {
 
-        // Crea el VBox para la publicación
         VBox nuevaPublicacionVBox = new VBox();
         nuevaPublicacionVBox.setStyle("-fx-background-color: #bdc3c7");
         nuevaPublicacionVBox.setPrefWidth(742);
         nuevaPublicacionVBox.setPrefHeight(149);
 
-        // AnchorPane dentro del VBox
         AnchorPane nuevaPublicacionPane = new AnchorPane();
         nuevaPublicacionPane.setPrefWidth(742);
         nuevaPublicacionPane.setPrefHeight(149);
         nuevaPublicacionPane.setStyle("-fx-background-color: #bdc3c7");
         nuevaPublicacionVBox.getChildren().add(nuevaPublicacionPane);
 
+        ImageView imageViewPublicacion = new ImageView();
         imageViewPublicacion.setLayoutX(14);
         imageViewPublicacion.setLayoutY(13);
         imageViewPublicacion.setFitHeight(110);
         imageViewPublicacion.setFitWidth(191);
         imageViewPublicacion.setPreserveRatio(true);
 
-        // Elementos de la publicación
+        if (imageSeleccionada != null) {
+            imageViewPublicacion.setImage(imageSeleccionada);
+        }
+
         Label labelNameUser = new Label(usuario.nombreUsuario());
         labelNameUser.setLayoutX(236);
         labelNameUser.setLayoutY(14);
@@ -539,6 +544,7 @@ public class MuroViewController {
         Label labelNombreNuevoProducto = new Label(txtNombreNuevoProducto.getText());
         labelNombreNuevoProducto.setLayoutX(542);
         labelNombreNuevoProducto.setLayoutY(16);
+        labelNombreNuevoProducto.setFont(Font.font("Berlin Sans FB",14));
 
         Label labelPrecioNuevoProducto = new Label("Precio: "+ txtPrecioNuevoProducto.getText());
         labelPrecioNuevoProducto.setLayoutX(648);
@@ -573,24 +579,50 @@ public class MuroViewController {
         Text textoDescripcion = new Text(txtDescripcionPublicacionnueva.getText());
         txtFlowDescripcionNuevaPublicacion.getChildren().add(textoDescripcion);
 
+        //CODIGO DE PRUEBA------------------;
+
+        // ListView para mostrar los comentarios
+        ListView<String> listViewComentarios = new ListView<>();
+        listViewComentarios.setLayoutX(236);
+        listViewComentarios.setLayoutY(120);
+        listViewComentarios.setPrefHeight(60);
+        listViewComentarios.setPrefWidth(300);
+
+        buttonComentarNuevaPublicacion.setOnAction(e -> {
+            String comentario = txtComentarioNuevaPublicacion.getText().trim();
+            if (!comentario.isEmpty()) {
+                listViewComentarios.getItems().add(usuario.nombreUsuario() + ": " + comentario);
+                txtComentarioNuevaPublicacion.clear();
+            }
+        });
+
         nuevaPublicacionPane.getChildren().addAll(labelNameUser, labelFechaNuevaPublicacion,
                 labelNuevaHoraPublicacion, labelNombreNuevoProducto,
                 buttonLikeNuevaPubli, txtComentarioNuevaPublicacion,
-                buttonComentarNuevaPublicacion, txtFlowDescripcionNuevaPublicacion,labelPrecioNuevoProducto);
+                buttonComentarNuevaPublicacion, txtFlowDescripcionNuevaPublicacion,
+                labelPrecioNuevoProducto,listViewComentarios);
         nuevaPublicacionPane.getChildren().add(imageViewPublicacion);
+
 
 
 
         return nuevaPublicacionVBox;
     }
 
+
     public void crearPublicacion() {
+
+        if (imageSeleccionada == null) {
+            mostrarAlertaInfo("Información", "Imagen requerida", "Por favor, selecciona una imagen del producto para la publicación.");
+            return;
+        }
 
         if (txtCategoriaNuevoProducto.getText().isEmpty() ||
                 txtNombreNuevoProducto.getText().isEmpty() ||
                 txtDescripcionPublicacionnueva.getText().isEmpty() ||
                 txtPrecioNuevoProducto.getText().isEmpty()) {
             mostrarAlertaError();
+            return;
 
         }
 
@@ -599,25 +631,24 @@ public class MuroViewController {
         }
         muroController.agregarPublicacion(crearPubliDto());
 
-        // Crea la publicación para los dos contenedores
         VBox nuevaPublicacionVBox1 = crearPublicacionVBox();
         VBox nuevaPublicacionVBox2 = crearPublicacionVBox();
 
-        // Agrega la publicación al primer contenedor
         vboxContainerprincipal.getChildren().add(nuevaPublicacionVBox1);
         double alturaActualPrincipal = vboxContainerprincipal.getPrefHeight();
-        vboxContainerprincipal.setPrefHeight(alturaActualPrincipal + 149);
+        vboxContainerprincipal.setPrefHeight(alturaActualPrincipal + 210);
         anchorPaneHome.setPrefHeight(vboxContainerprincipal.getPrefHeight());
         scrollPaneHome.setVvalue(1.0);
         vboxContainerprincipal.setSpacing(11);
 
-        // Agrega la publicación al segundo contenedor (Mis Publicaciones)
         vboxContainerMisPublicaciones.getChildren().add(nuevaPublicacionVBox2);
         double alturaActualMisPublicaciones = vboxContainerMisPublicaciones.getPrefHeight();
-        vboxContainerMisPublicaciones.setPrefHeight(alturaActualMisPublicaciones + 149);
+        vboxContainerMisPublicaciones.setPrefHeight(alturaActualMisPublicaciones + 190);
         anchorPaneMisPublicaciones.setPrefHeight(vboxContainerMisPublicaciones.getPrefHeight());
         scrollPaneMisPublicaciones.setVvalue(1.0);
         vboxContainerMisPublicaciones.setSpacing(11);
+
+        limpiarCampos();
     }
 
 
@@ -667,6 +698,7 @@ public class MuroViewController {
                 Label labelNombreinitProducto = new Label(publicacion.getProductoPublicado().getNombre());
                 labelNombreinitProducto.setLayoutX(542);
                 labelNombreinitProducto.setLayoutY(16);
+                labelNombreinitProducto.setFont(Font.font("Berlin Sans FB",14));
 
                 double precio = publicacion.getProductoPublicado().getPrecio();
                 String precioString = String.format("%.2f", precio);
@@ -705,21 +737,41 @@ public class MuroViewController {
                 txtFlowDescripcioninitPublicacion.getChildren().clear();
                 txtFlowDescripcioninitPublicacion.getChildren().add(textoDescripcion);
 
-                nuevaPublicacioninitPane.getChildren().addAll(imageinitProducto,labelNameUser,labelFechainitPublicacion,labelinitHoraPublicacion,labelNombreinitProducto,buttonLikeinitPubli,txtComentarioinitPublicacion,buttonComentarinitPublicacion,txtFlowDescripcioninitPublicacion,labelPrecioinitProducto);
+                // ListView para mostrar comentarios iniciales
+                ListView<String> listViewComentarios = new ListView<>();
+                listViewComentarios.setLayoutX(236);
+                listViewComentarios.setLayoutY(120);
+                listViewComentarios.setPrefHeight(60);
+                listViewComentarios.setPrefWidth(300);
+                listViewComentarios.setStyle("-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; -fx-padding: 5;");
+
+                // Agregar comentarios iniciales a ListView
+                for (Comentario comentario : publicacion.getListaComentarios()) {
+                    String comentarioTexto = comentario.getUsuario().getNombreUsuario() + ": " + comentario.getContenido();
+                    listViewComentarios.getItems().add(comentarioTexto);
+                }
+
+                // Agregar nuevo comentario al ListView al presionar "Comentar"
+                buttonComentarinitPublicacion.setOnAction(e -> {
+                    String comentario = txtComentarioinitPublicacion.getText().trim();
+                    if (!comentario.isEmpty()) {
+                        listViewComentarios.getItems().add(vendedor.getUsuarioAsociado().getNombreUsuario() + ": " + comentario);
+                        txtComentarioinitPublicacion.clear();
+                    }
+                });
+
+                nuevaPublicacioninitPane.getChildren().addAll(imageinitProducto,labelNameUser,labelFechainitPublicacion,labelinitHoraPublicacion,labelNombreinitProducto,buttonLikeinitPubli,txtComentarioinitPublicacion,buttonComentarinitPublicacion,txtFlowDescripcioninitPublicacion,labelPrecioinitProducto,listViewComentarios);
                 vboxContainerprincipal.getChildren().add(nuevaPublicacioninitVBox);
 
                 double alturaActualPrincipal = vboxContainerprincipal.getPrefHeight();
-                vboxContainerprincipal.setPrefHeight(alturaActualPrincipal + 149);
+                vboxContainerprincipal.setPrefHeight(alturaActualPrincipal + 210);
                 anchorPaneHome.setPrefHeight(vboxContainerprincipal.getPrefHeight());
                 scrollPaneHome.setVvalue(1.0);
                 vboxContainerprincipal.setSpacing(11);
 
-
             }
 
         }
-
-
 
     }
 
@@ -773,27 +825,34 @@ public class MuroViewController {
         alerta.showAndWait();
     }
 
+    private void mostrarAlertaInfo(String titulo, String encabezado, String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(encabezado);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
     public void chooserImage() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar Imagen para publicacion");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Archivos de Imagen", "*.png", "*.jpg", "*.jpeg")
-        );
+        fileChooser.setTitle("Seleccionar Imagen para la Publicación");
 
-        File archivoSeleccionado = fileChooser.showOpenDialog(new Stage());
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivos de Imagen", "*.png", "*.jpg", "*.jpeg"));
+
+        File archivoSeleccionado = fileChooser.showOpenDialog(null);
+
         if (archivoSeleccionado != null) {
-            try {
-                Image imagen = new Image(archivoSeleccionado.toURI().toString());
-                imageViewPublicacion.setImage(imagen);
-                imageViewPublicacion.setFitHeight(100); // Ajusta el tamaño si es necesario
-                imageViewPublicacion.setFitWidth(100); // Ajusta el tamaño si es necesario
-            } catch (Exception e) {
-                Alert alertaError = new Alert(Alert.AlertType.ERROR);
-                alertaError.setTitle("Error al cargar imagen");
-                alertaError.setContentText("Hubo un problema al cargar la imagen seleccionada.");
-                alertaError.showAndWait();
-            }
+            imageSeleccionada = new Image(archivoSeleccionado.toURI().toString());
         }
+    }
+
+    public void limpiarCampos() {
+        txtNombreNuevoProducto.clear();
+        txtPrecioNuevoProducto.clear();
+        txtDescripcionPublicacionnueva.clear();
+        txtCategoriaNuevoProducto.clear();
+        imageSeleccionada = null;
     }
 
 

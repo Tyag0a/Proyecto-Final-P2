@@ -1,8 +1,9 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.model.builder.UsuarioBuilder;
+import co.edu.uniquindio.marketplace.model.observer.Observer;
 
-public class Usuario {
+public class Usuario implements Observer {
     public String getContraseña() {
         return contraseña;
     }
@@ -46,4 +47,9 @@ public class Usuario {
         return super.toString();
     }
 
+    @Override
+    public void update(String notificacion) {
+        System.out.println("La notificacion fue recibida por" + nombreUsuario + ":" + notificacion);
+
+    }
 }

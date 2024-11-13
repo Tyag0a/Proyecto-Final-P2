@@ -1,12 +1,15 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.model.builder.VendedorBuilder;
+import co.edu.uniquindio.marketplace.model.observer.Observer;
+import co.edu.uniquindio.marketplace.model.observer.Subject;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
 public class Vendedor extends Persona {
+    private Subject subject;
     private final int maxAsociados = 10;
     Collection<Producto> listProductos;
     Muro muro;
@@ -20,6 +23,8 @@ public class Vendedor extends Persona {
         this.muro = new Muro();
         this.listVendedorsAsociados = new LinkedList<>();
         this.listChats = new LinkedList<>();
+        this.subject = new Subject();
+
 
     }
 
@@ -68,4 +73,30 @@ public class Vendedor extends Persona {
     public String getApellido() {
         return super.getApellido();
     }
+
+    public void agregarContacto(Observer contacto) {
+        subject.agregarObserver(contacto);
+    }
+
+    public void eliminarContacto(Observer contacto) {
+        subject.eliminarObserver(contacto);
+    }
+
+
+    public void publicarProducto(Producto producto) {
+        listProductos.add(producto);
+        String notification = "Nuevo producto publicado por " + nombre + ": " + producto.getNombre();
+        subject.notificarObservers(notification);
+    }
+
+    public void comentarProducto(Producto producto, String comentario) {
+        String notification = nombre + " ha comentado en el producto: " + producto.getNombre();
+        subject.notificarObservers(notification);
+    }
+
+    public void meGustaProducto(Producto producto) {
+        String notification = nombre + " dio 'Me gusta' al producto: " + producto.getNombre();
+        subject.notificarObservers(notification);
+    }
+
 }

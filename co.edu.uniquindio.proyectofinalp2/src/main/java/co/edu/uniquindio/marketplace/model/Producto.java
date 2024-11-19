@@ -3,6 +3,8 @@ package co.edu.uniquindio.marketplace.model;
 import co.edu.uniquindio.marketplace.model.builder.ProductoBuilder;
 import javafx.scene.image.Image;
 
+import java.time.temporal.TemporalAccessor;
+
 public class Producto {
     String nombre;
     Image imagen;
@@ -86,4 +88,5 @@ public class Producto {
     public void setIdVendedor(String idVendedor) {
         this.idVendedor = idVendedor;
     }
+
 }

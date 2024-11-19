@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.model.builder.VendedorBuilder;
+import co.edu.uniquindio.marketplace.model.mediator.Mediador;
 import co.edu.uniquindio.marketplace.model.observer.Observer;
 import co.edu.uniquindio.marketplace.model.observer.Subject;
 
@@ -15,6 +16,7 @@ public class Vendedor extends Persona {
     Muro muro;
     Collection<Vendedor> listVendedorsAsociados;
     Collection<Vendedor> listChats;
+    private Mediador mediador;
 
 
     public Vendedor (String nombre, String apellido,String cedula, String direccion,Usuario usuarioAsociado) {
@@ -24,6 +26,7 @@ public class Vendedor extends Persona {
         this.listVendedorsAsociados = new LinkedList<>();
         this.listChats = new LinkedList<>();
         this.subject = new Subject();
+        this.mediador = mediador;
 
 
     }
@@ -97,6 +100,15 @@ public class Vendedor extends Persona {
     public void meGustaProducto(Producto producto) {
         String notification = nombre + " dio 'Me gusta' al producto: " + producto.getNombre();
         subject.notificarObservers(notification);
+    }
+
+    public void enviarMensaje(String mensaje){
+        System.out.println(this.nombre + " está enviando el mensaje: " + mensaje);
+        mediador.enviarMensaje(mensaje, this); // El vendor envía el mensaje
+    }
+
+    public void recibirMensaje(String mensaje) {
+        System.out.println(this.nombre + " ha recibido el mensaje: " + mensaje);
     }
 
 }

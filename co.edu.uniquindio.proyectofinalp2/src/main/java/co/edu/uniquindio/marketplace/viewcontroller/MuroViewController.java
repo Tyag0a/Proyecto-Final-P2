@@ -3,6 +3,7 @@ package co.edu.uniquindio.marketplace.viewcontroller;
 import co.edu.uniquindio.marketplace.controller.MuroController;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,7 +21,10 @@ import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,6 +37,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class MuroViewController {
     private UsuarioDto usuario;
@@ -374,7 +380,8 @@ public class MuroViewController {
     }
 
     @FXML
-    void onCerrarSesion(ActionEvent event) {
+    void onCerrarSesion(ActionEvent event) throws IOException {
+        cerrarSesion();
 
     }
 
@@ -672,7 +679,9 @@ public class MuroViewController {
                 nuevaPublicacioninitPane.setStyle("-fx-background-color: #bdc3c7");
                 nuevaPublicacioninitVBox.getChildren().add(nuevaPublicacioninitPane);
 
-                Image imagenProducto = new Image(Objects.requireNonNull(getClass().getResourceAsStream(publicacion.getProductoPublicado().getRutaImagen())));
+                Image imagenProducto = new Image(Objects.
+                        requireNonNull(getClass().
+                                getResourceAsStream(publicacion.getProductoPublicado().getRutaImagen())));
                 ImageView imageinitProducto = new ImageView();
                 imageinitProducto.setImage(imagenProducto);
                 imageinitProducto.setLayoutX(14);
@@ -853,6 +862,23 @@ public class MuroViewController {
         txtDescripcionPublicacionnueva.clear();
         txtCategoriaNuevoProducto.clear();
         imageSeleccionada = null;
+    }
+
+    public void cerrarSesion() throws IOException {
+        JOptionPane.showMessageDialog(null,"Cerrando sesión.... \nVuelve pronto :(.");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/co/login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),601,469);
+        Stage stage = new Stage();
+
+        LoginViewController loginViewController = fxmlLoader.getController();
+
+        stage.setScene(scene);
+        stage.setTitle("Ingresar a Marketplace" );
+
+        Stage stageCerrar = (Stage) btnCerrarSesion.getScene().getWindow();
+        stageCerrar.close();
+
+        stage.show();
     }
 
 

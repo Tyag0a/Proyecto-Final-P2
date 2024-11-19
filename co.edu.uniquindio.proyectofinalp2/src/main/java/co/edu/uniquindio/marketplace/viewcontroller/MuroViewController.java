@@ -8,10 +8,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import co.edu.uniquindio.marketplace.controller.SessionManager;
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
@@ -19,6 +17,7 @@ import co.edu.uniquindio.marketplace.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.model.*;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +47,7 @@ public class MuroViewController {
     private SessionManager sessionManager = SessionManager.getInstance();
 
     private Image imageSeleccionada;
-
+    private final List<Usuario> usuariosSugeridos = new LinkedList<>();
 
     @FXML
     private ResourceBundle resources;
@@ -283,6 +282,9 @@ public class MuroViewController {
     private ScrollPane scrollPaneMisPublicaciones;
 
     @FXML
+    private ScrollPane scrollPaneAmigos;
+
+    @FXML
     private TextField txtCategoriaNuevoProducto;
 
     @FXML
@@ -337,6 +339,9 @@ public class MuroViewController {
     private VBox vboxContainerprincipal;
 
     @FXML
+    private VBox vboxContainerUsuariosEncontrados;
+
+    @FXML
     private VBox vboxMyPublicacion1;
 
     @FXML
@@ -350,6 +355,12 @@ public class MuroViewController {
 
     @FXML
     private VBox vboxPublicacion3;
+
+    @FXML
+    private Tab tabMiMuro;
+
+    @FXML
+    private TabPane tabPanePrincipal;
 
 
     @FXML
@@ -376,6 +387,8 @@ public class MuroViewController {
 
     @FXML
     void onBuscarUsuario(ActionEvent event) {
+        generarUsuariosEncontradosVbox();
+
 
     }
 
@@ -405,6 +418,7 @@ public class MuroViewController {
         initView();
 
         mostrarDataInicializada();
+        inicializarSugerencias();
 
         assert btnAgregarSugerencia1 != null : "fx:id=\"btnAgregarSugerencia1\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert btnAgregarSugerencia2 != null : "fx:id=\"btnAgregarSugerencia2\" was not injected: check your FXML file 'muro-view.fxml'.";
@@ -499,6 +513,13 @@ public class MuroViewController {
         assert vboxPublicacion2 != null : "fx:id=\"vboxPublicacion2\" was not injected: check your FXML file 'muro-view.fxml'.";
         assert vboxPublicacion3 != null : "fx:id=\"vboxPublicacion3\" was not injected: check your FXML file 'muro-view.fxml'.";
 
+    }
+
+    public void inicializarSugerencias() {
+
+        Marketplace marketplace = muroController.inicializarData();
+        usuariosSugeridos.addAll(marketplace.getUsuarios());
+        generarUsuariosSugeridosVBox();
     }
 
     private void initView() {
@@ -879,6 +900,131 @@ public class MuroViewController {
         stageCerrar.close();
 
         stage.show();
+    }
+
+    public void generarUsuariosSugeridosVBox(){
+
+        vboxContainerAmigos.getChildren().clear();
+        Image iconoUsuario = new Image(getClass().getResource("/co/edu/uniquindio/co/viewmedia/user_icon.png").toString());
+        for (Usuario usuario : usuariosSugeridos) {
+
+            HBox hboxUsuario = new HBox();
+            hboxUsuario.setSpacing(10);
+            hboxUsuario.setStyle("-fx-background-color: #bdc3c7");
+            hboxUsuario.setPrefWidth(733);
+            hboxUsuario.setPrefHeight(72);
+
+            AnchorPane anchorPaneSugerencia = new AnchorPane();
+            anchorPaneSugerencia.setPrefWidth(733);
+            anchorPaneSugerencia.setPrefHeight(72);
+            anchorPaneSugerencia.setStyle("-fx-background-color: #bdc3c7");
+
+            ImageView imageView = new ImageView(iconoUsuario);
+            imageView.setFitWidth(24);
+            imageView.setFitHeight(25);
+            imageView.setPreserveRatio(true);
+            imageView.setLayoutX(38);
+            imageView.setLayoutY(24);
+
+            Label labelUsuario = new Label(usuario.getNombreUsuario().toUpperCase());
+            labelUsuario.setFont(Font.font("Berlin Sans FB", 13));
+            labelUsuario.setLayoutX(84);
+            labelUsuario.setLayoutY(27);
+
+            Button botonAgregar = new Button("AGREGAR");
+            botonAgregar.setOnAction(e -> agregarVendedorAliado(usuario));
+            botonAgregar.setPrefWidth(69);
+            botonAgregar.setPrefHeight(25);
+            botonAgregar.setLayoutX(283);
+            botonAgregar.setLayoutY(24);
+            botonAgregar.setStyle("-fx-background-color: #5d6d7e");
+
+            anchorPaneSugerencia.getChildren().addAll(imageView, labelUsuario, botonAgregar);
+            hboxUsuario.getChildren().add(anchorPaneSugerencia);
+            vboxContainerAmigos.getChildren().add(hboxUsuario);
+
+            double alturaActualPrincipal = vboxContainerAmigos.getPrefHeight();
+            vboxContainerAmigos.setPrefHeight(alturaActualPrincipal + 210);
+            scrollPaneAmigos.setVvalue(1.0);
+            vboxContainerAmigos.setSpacing(11);
+        }
+
+
+    }
+
+
+    public void agregarVendedorAliado (Usuario usuario){
+        JOptionPane.showMessageDialog(null,"AMIGAZO AGREGADO");
+
+    }
+
+    public void generarUsuariosEncontradosVbox () {
+
+        vboxContainerUsuariosEncontrados.getChildren().clear();
+
+        String textoBuscado = txtUsuarioBuscado.getText().trim().toLowerCase();
+
+        txtUsuarioBuscado.clear();
+
+        if (textoBuscado.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Por Favor ingresa un nombre de usuario para buscar.");
+            return;
+        }
+
+        List<Usuario> usuariosEncontrados = usuariosSugeridos.stream()
+                .filter(usuario -> usuario.getNombreUsuario().toLowerCase().contains(textoBuscado))
+                .toList();
+
+        if (usuariosEncontrados.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"No se encontraron usuarios con ese nombre.");
+            return;
+        }
+
+        Image iconoUsuario = new Image(getClass().getResource("/co/edu/uniquindio/co/viewmedia/user_icon.png").toString());
+
+        for (Usuario usuario : usuariosEncontrados) {
+
+            HBox hboxUsuario = new HBox();
+            hboxUsuario.setSpacing(10);
+            hboxUsuario.setStyle("-fx-background-color: #bdc3c7");
+            hboxUsuario.setPrefWidth(733);
+            hboxUsuario.setPrefHeight(72);
+
+            AnchorPane anchorPaneResultado = new AnchorPane();
+            anchorPaneResultado.setPrefWidth(733);
+            anchorPaneResultado.setPrefHeight(72);
+            anchorPaneResultado.setStyle("-fx-background-color: #bdc3c7");
+
+            ImageView imageView = new ImageView(iconoUsuario);
+            imageView.setFitWidth(24);
+            imageView.setFitHeight(25);
+            imageView.setPreserveRatio(true);
+            imageView.setLayoutX(38);
+            imageView.setLayoutY(24);
+
+            Label labelUsuario = new Label(usuario.getNombreUsuario().toUpperCase());
+            labelUsuario.setFont(Font.font("Berlin Sans FB", 13));
+            labelUsuario.setLayoutX(84);
+            labelUsuario.setLayoutY(27);
+
+            Button botonAgregar = new Button("AGREGAR");
+            botonAgregar.setOnAction(e -> agregarVendedorAliado(usuario));
+            botonAgregar.setPrefWidth(69);
+            botonAgregar.setPrefHeight(25);
+            botonAgregar.setLayoutX(283);
+            botonAgregar.setLayoutY(24);
+            botonAgregar.setStyle("-fx-background-color: #5d6d7e");
+
+            anchorPaneResultado.getChildren().addAll(imageView, labelUsuario, botonAgregar);
+            hboxUsuario.getChildren().add(anchorPaneResultado);
+            vboxContainerUsuariosEncontrados.getChildren().add(hboxUsuario);
+        }
+
+        double alturaActual = vboxContainerUsuariosEncontrados.getPrefHeight();
+        vboxContainerUsuariosEncontrados.setPrefHeight(alturaActual + (usuariosEncontrados.size() * 72) + (usuariosEncontrados.size() - 1) * 11);
+        scrollPaneAmigos.setVvalue(1.0);
+        vboxContainerUsuariosEncontrados.setSpacing(11);
+
     }
 
 

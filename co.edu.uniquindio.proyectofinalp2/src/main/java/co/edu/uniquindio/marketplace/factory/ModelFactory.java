@@ -114,11 +114,15 @@ public class ModelFactory implements IModelFactoryService {
         Producto p3 = new Producto("Camisa",
                 "/co/edu/uniquindio/co/viewmedia/camisa_P3.jpg","Ropa",70.000, EstadoProducto.PUBLICADO);
 
+        Producto p4 = new Producto("Gafas",
+                "/co/edu/uniquindio/co/viewmedia/P4Image.png","Accesorios",200.000,EstadoProducto.PUBLICADO);
+
         //Publicaciones
 
         Publicacion publicacion1 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p1,"telefono visajoso 150GB RAM totalmente nuevo");
         Publicacion publicacion2 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p2,"TV de 70 pulgadas de segunda");
         Publicacion publicacion3 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p3,"Camisa nueva vasilona, mas info inbox");
+        Publicacion publicacion4 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p4,"Gafas nuevas, poco aumento");
 
         //Vendedores y sus usuarios y muros
 
@@ -140,6 +144,12 @@ public class ModelFactory implements IModelFactoryService {
         Muro muro3 = new Muro("862368823");
         vendedor3.setMuro(muro3);
 
+        Usuario usuario4 = new Usuario("Omar_fo9","omar3412",null);
+        Vendedor vendedor4 = new Vendedor("Omar","martin","9327462","direccion4",usuario4);
+        usuario4.setPersonaAsociada(vendedor4);
+        Muro muro4 = new Muro("9327462");
+        vendedor4.setMuro(muro4);
+
         //admin
 
         //        Usuario usuario4 = new Usuario("juanalpargata","8921j",null);
@@ -154,26 +164,34 @@ public class ModelFactory implements IModelFactoryService {
         marketplace.getVendedores().add(vendedor2);
         marketplace.getUsuarios().add(usuario3);
         marketplace.getVendedores().add(vendedor3);
+        marketplace.getUsuarios().add(usuario4);
+        marketplace.getVendedores().add(vendedor4);
 
         //agregar productos
 
         vendedor1.getListProductos().add(p1);
         vendedor2.getListProductos().add(p2);
         vendedor3.getListProductos().add(p3);
+        vendedor4.getListProductos().add(p4);
 
         //agregar publicaciones
         vendedor1.getMuro().getListPublicaciones().add(publicacion1);
         vendedor2.getMuro().getListPublicaciones().add(publicacion2);
         vendedor3.getMuro().getListPublicaciones().add(publicacion3);
+        vendedor4.getMuro().getListPublicaciones().add(publicacion4);
 
-        Comentario comentario1 = new Comentario("Detalles y precio",usuario1);
+        Comentario comentario1 = new Comentario("Detalles y precio",usuario3);
         publicacion1.getListaComentarios().add(comentario1);
 
-        Comentario comentario2 = new Comentario("lo quiero",usuario2);
+        Comentario comentario2 = new Comentario("lo quiero",usuario1);
         publicacion2.getListaComentarios().add(comentario2);
 
-        Comentario comentario3 = new Comentario("Esta feota",usuario3);
+        Comentario comentario3 = new Comentario("Esta feota",usuario2);
         publicacion3.getListaComentarios().add(comentario3);
+
+        Comentario comentario4 = new Comentario("las necesito",usuario1);
+        publicacion4.getListaComentarios().add(comentario4);
+
 
 
 

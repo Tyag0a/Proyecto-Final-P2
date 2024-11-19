@@ -89,4 +89,7 @@ public class Producto {
         this.idVendedor = idVendedor;
     }
 
+    public boolean getLikes() {
+        return false;
+    }
 }

@@ -21,9 +21,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.72" prefHeight="588.0" prefWidth="806.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.MuroViewController">
    <children>
-      <TabPane layoutX="38.0" layoutY="-1.0" prefHeight="540.0" prefWidth="769.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPanePrincipal" layoutX="38.0" layoutY="-1.0" prefHeight="540.0" prefWidth="769.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Mi Muro">
+          <Tab fx:id="tabMiMuro" text="Mi Muro">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="560.0">
                      <children>
@@ -73,9 +73,9 @@
                                           <TextField fx:id="txtUsuarioBuscado" layoutX="477.0" layoutY="20.0" promptText="Buscar Usuario" />
                                           <Button fx:id="btnBuscarUsuario" layoutX="642.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBuscarUsuario" text="Buscar" />
                                           <Separator layoutY="54.0" prefHeight="3.0" prefWidth="769.0" />
-                                          <ScrollPane layoutX="14.0" layoutY="64.0" prefHeight="368.0" prefWidth="747.0">
+                                          <ScrollPane fx:id="scrollPaneAmigos" layoutX="14.0" layoutY="64.0" prefHeight="368.0" prefWidth="747.0">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="749.0" style="-fx-background-color: #bdc3c7;">
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="749.0" style="-fx-background-color: gray;">
                                                    <children>
                                                       <VBox fx:id="vboxContainerAmigos" layoutX="1.0" layoutY="1.0" prefHeight="351.0" prefWidth="377.0">
                                                          <children>
@@ -124,41 +124,9 @@
                                                                   </AnchorPane>
                                                                </children>
                                                             </HBox>
-                                                            <HBox fx:id="hboxSugerencia4" prefHeight="60.0" prefWidth="733.0">
-                                                               <children>
-                                                                  <AnchorPane prefHeight="60.0" prefWidth="485.0">
-                                                                     <children>
-                                                                        <Label fx:id="lblUsuarioSugerido4" layoutX="86.0" layoutY="21.0" text="USUARIO 4" />
-                                                                        <Button fx:id="btnAgregarSugerencia4" layoutX="283.0" layoutY="18.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
-                                                                        <ImageView fx:id="imgUserIconSugerencia4" fitHeight="25.0" fitWidth="24.0" layoutX="39.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                                                           <image>
-                                                                              <Image url="@viewmedia/user_icon.png" />
-                                                                           </image>
-                                                                        </ImageView>
-                                                                     </children></AnchorPane>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox fx:id="hboxSugerencia5" prefHeight="57.0" prefWidth="733.0">
-                                                               <children>
-                                                                  <AnchorPane prefHeight="64.0" prefWidth="546.0">
-                                                                     <children>
-                                                                        <Label fx:id="lblUsuarioSugerido5" layoutX="85.0" layoutY="20.0" text="USUARIO 5" />
-                                                                        <Button fx:id="btnAgregarSugerencia5" layoutX="283.0" layoutY="16.0" mnemonicParsing="false" onAction="#onAgregarAmistad" text="AGREGAR" />
-                                                                        <ImageView fx:id="imgUserIconSugerencia5" fitHeight="25.0" fitWidth="24.0" layoutX="40.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                                                           <image>
-                                                                              <Image url="@viewmedia/user_icon.png" />
-                                                                           </image>
-                                                                        </ImageView>
-                                                                     </children></AnchorPane>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox prefHeight="53.0" prefWidth="733.0">
-                                                               <children>
-                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                                                               </children>
-                                                            </HBox>
                                                          </children>
                                                       </VBox>
+                                                      <VBox fx:id="vboxContainerUsuariosEncontrados" layoutX="391.0" prefHeight="353.0" prefWidth="342.0" />
                                                    </children>
                                                 </AnchorPane>
                                             </content>

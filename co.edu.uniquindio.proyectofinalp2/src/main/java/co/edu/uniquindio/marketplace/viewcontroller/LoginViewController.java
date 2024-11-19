@@ -255,5 +255,9 @@ public class LoginViewController {
         alert.showAndWait();
     }
 
+    public UsuarioDto getUsuario() {
+        return crearUserDto();
+    }
+
 
 }

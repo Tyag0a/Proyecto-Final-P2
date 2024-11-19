@@ -6,6 +6,7 @@ import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.mapping.mappers.MarketplaceMappingImpl;
 import co.edu.uniquindio.marketplace.model.*;
 import co.edu.uniquindio.marketplace.services.IModelFactoryService;
+import javafx.beans.property.Property;
 import javafx.scene.image.Image;
 
 import java.time.LocalDate;
@@ -117,12 +118,17 @@ public class ModelFactory implements IModelFactoryService {
         Producto p4 = new Producto("Gafas",
                 "/co/edu/uniquindio/co/viewmedia/P4Image.png","Accesorios",200.000,EstadoProducto.PUBLICADO);
 
+        Producto p5 = new Producto("Traje de gala",
+                "/co/edu/uniquindio/co/viewmedia/P5Image.png","ropa",500.000,EstadoProducto.PUBLICADO);
+
+
         //Publicaciones
 
         Publicacion publicacion1 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p1,"telefono visajoso 150GB RAM totalmente nuevo");
         Publicacion publicacion2 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p2,"TV de 70 pulgadas de segunda");
         Publicacion publicacion3 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p3,"Camisa nueva vasilona, mas info inbox");
         Publicacion publicacion4 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p4,"Gafas nuevas, poco aumento");
+        Publicacion publicacion5 = new Publicacion(LocalDate.now(),LocalDateTime.now(),p5,"Traje de gala mas info inbox");
 
         //Vendedores y sus usuarios y muros
 
@@ -150,11 +156,23 @@ public class ModelFactory implements IModelFactoryService {
         Muro muro4 = new Muro("9327462");
         vendedor4.setMuro(muro4);
 
+        Usuario usuario5 = new Usuario("daniel09","dnl9477",null);
+        Vendedor vendedor5 = new Vendedor ("Daniel","martinez","35342893","alli",usuario5);
+        usuario5.setPersonaAsociada(vendedor5);
+        Muro muro5 = new Muro("35342893");
+        vendedor5.setMuro(muro5);
+
         //admin
 
         //        Usuario usuario4 = new Usuario("juanalpargata","8921j",null);
         //        Administrador administrador = new Administrador("juan","zuckerberg","14252324","direccionadmin","01",usuario4);
         //        usuario4.setPersonaAsociada(administrador);
+
+        usuario1.getPublicaciones().add(publicacion1);
+        usuario2.getPublicaciones().add(publicacion2);
+        usuario3.getPublicaciones().add(publicacion3);
+        usuario4.getPublicaciones().add(publicacion4);
+        usuario5.getPublicaciones().add(publicacion5);
 
         //agregar usuarios y personas
 
@@ -166,6 +184,8 @@ public class ModelFactory implements IModelFactoryService {
         marketplace.getVendedores().add(vendedor3);
         marketplace.getUsuarios().add(usuario4);
         marketplace.getVendedores().add(vendedor4);
+        marketplace.getUsuarios().add(usuario5);
+        marketplace.getVendedores().add(vendedor5);
 
         //agregar productos
 
@@ -173,12 +193,14 @@ public class ModelFactory implements IModelFactoryService {
         vendedor2.getListProductos().add(p2);
         vendedor3.getListProductos().add(p3);
         vendedor4.getListProductos().add(p4);
+        vendedor5.getListProductos().add(p5);
 
         //agregar publicaciones
         vendedor1.getMuro().getListPublicaciones().add(publicacion1);
         vendedor2.getMuro().getListPublicaciones().add(publicacion2);
         vendedor3.getMuro().getListPublicaciones().add(publicacion3);
         vendedor4.getMuro().getListPublicaciones().add(publicacion4);
+        vendedor5.getMuro().getListPublicaciones().add(publicacion5);
 
         Comentario comentario1 = new Comentario("Detalles y precio",usuario3);
         publicacion1.getListaComentarios().add(comentario1);
@@ -191,6 +213,9 @@ public class ModelFactory implements IModelFactoryService {
 
         Comentario comentario4 = new Comentario("las necesito",usuario1);
         publicacion4.getListaComentarios().add(comentario4);
+
+        Comentario comentario5 = new Comentario("facha",usuario2);
+        publicacion5.getListaComentarios().add(comentario5);
 
 
 
@@ -218,6 +243,11 @@ public class ModelFactory implements IModelFactoryService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean agregarAliado(Usuario usuario) {
+        return marketplace.agregarAliado(usuario);
     }
 
 

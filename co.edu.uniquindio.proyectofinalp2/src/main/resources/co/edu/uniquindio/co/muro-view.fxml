@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -359,114 +358,6 @@
                         </TabPane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text=" Aliado ">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="48.0" layoutY="62.0" text="Usuario XXXX">
-                           <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
-                           </font>
-                        </Label>
-                        <TreeView layoutX="38.0" layoutY="90.0" prefHeight="366.0" prefWidth="294.0" />
-                        <TextField layoutX="54.0" layoutY="122.0" promptText="mensaje" />
-                        <Button layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="Enviar Mensaje" />
-                        <Button layoutX="159.0" layoutY="171.0" mnemonicParsing="false" text="Ver Chat " />
-                        <Separator layoutX="38.0" layoutY="209.0" prefHeight="3.0" prefWidth="292.0" />
-                        <Label layoutX="123.0" layoutY="226.0" text="COMENTARIOS Y LIKES">
-                           <font>
-                              <Font name="Arial Narrow" size="12.0" />
-                           </font>
-                        </Label>
-                        <Separator layoutX="38.0" layoutY="254.0" prefHeight="0.0" prefWidth="291.0" />
-                        <Separator layoutX="38.0" layoutY="293.0" prefHeight="2.0" prefWidth="288.0" />
-                        <Separator layoutX="38.0" layoutY="330.0" prefHeight="6.0" prefWidth="294.0" />
-                        <Separator layoutX="38.0" layoutY="375.0" prefHeight="6.0" prefWidth="295.0" />
-                        <Separator layoutX="38.0" layoutY="415.0" prefHeight="1.0" prefWidth="294.0" />
-                        <TabPane layoutX="372.0" layoutY="90.0" prefHeight="398.0" prefWidth="345.0" tabClosingPolicy="UNAVAILABLE">
-                          <tabs>
-                            <Tab text="Sus Productos">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="345.0">
-                                       <children>
-                                          <VBox layoutX="-4.0" prefHeight="369.0" prefWidth="351.0">
-                                             <children>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="92.0" prefWidth="345.0">
-                                                         <children>
-                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
-                                                            <Label layoutX="134.0" layoutY="14.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="92.0" prefWidth="346.0">
-                                                         <children>
-                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
-                                                            <Label layoutX="136.0" layoutY="14.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="92.0" prefWidth="346.0">
-                                                         <children>
-                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="93.0" prefWidth="347.0">
-                                                         <children>
-                                                            <ImageView fitHeight="75.0" fitWidth="91.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
-                                       </children></AnchorPane>
-                              </content>
-                            </Tab>
-                            <Tab text="Productos de contactos">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </Tab>
-                          </tabs>
-                        </TabPane>
-                        <Button layoutX="159.0" layoutY="58.0" mnemonicParsing="false" text="Eliminar amistad" />
-                        <Separator layoutY="46.0" prefHeight="0.0" prefWidth="754.0" />
-                        <Label fx:id="lblMarketplace1" layoutX="15.0" layoutY="8.0" text="MARKETPLACE">
-                           <font>
-                              <Font name="Berlin Sans FB" size="34.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.5260663507109005" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color green="0.5666666626930237" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>

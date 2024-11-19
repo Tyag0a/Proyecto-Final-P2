@@ -32,4 +32,10 @@ public class MuroController implements IMuroControllerService {
         return modelFactory.inicializarDatos();
     }
 
+    public boolean agregarAliado( Usuario usuario) {
+        return modelFactory.agregarAliado(usuario);
+    }
+
+
+
 }

@@ -3,6 +3,10 @@ package co.edu.uniquindio.marketplace.model;
 import co.edu.uniquindio.marketplace.model.builder.UsuarioBuilder;
 import co.edu.uniquindio.marketplace.model.observer.Observer;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+
 public class Usuario implements Observer {
     public String getContraseña() {
         return contraseña;
@@ -24,9 +28,13 @@ public class Usuario implements Observer {
 
     public void setPersonaAsociada(Persona personaAsociada) { this.personaAsociada = personaAsociada;}
 
+    public Collection<Publicacion> getPublicaciones() {return publicaciones;}
+
+
     public String nombreUsuario;
     private String contraseña;
     Persona personaAsociada;
+    Collection<Publicacion> publicaciones = new LinkedList<>();
 
     public Usuario() {
 

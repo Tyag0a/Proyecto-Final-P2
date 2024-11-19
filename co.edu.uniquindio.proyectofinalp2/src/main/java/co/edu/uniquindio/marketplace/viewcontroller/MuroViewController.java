@@ -21,6 +21,8 @@ import co.edu.uniquindio.marketplace.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,10 +32,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.text.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -405,7 +408,8 @@ public class MuroViewController {
     }
 
     @FXML
-    void onOpenWindow3(ActionEvent event) {
+    void onOpenWindow3(ActionEvent event) throws IOException {
+        openEstadisticas();
 
     }
 
@@ -932,7 +936,15 @@ public class MuroViewController {
             labelUsuario.setLayoutY(27);
 
             Button botonAgregar = new Button("AGREGAR");
-            botonAgregar.setOnAction(e -> agregarVendedorAliado(usuario));
+            botonAgregar.setOnAction(e -> {
+                boolean resultado = muroController.agregarAliado(usuario);
+                if (resultado) {
+                    vboxContainerAmigos.getChildren().remove(hboxUsuario);// Eliminar el HBox
+                    mostrarTabAliado(usuario);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al agregar aliado");
+                }
+            });
             botonAgregar.setPrefWidth(69);
             botonAgregar.setPrefHeight(25);
             botonAgregar.setLayoutX(283);
@@ -1009,6 +1021,15 @@ public class MuroViewController {
 
             Button botonAgregar = new Button("AGREGAR");
             botonAgregar.setOnAction(e -> agregarVendedorAliado(usuario));
+            botonAgregar.setOnAction(e -> {
+                boolean resultado = muroController.agregarAliado(usuario);
+                if (resultado) {
+                    vboxContainerUsuariosEncontrados.getChildren().remove(hboxUsuario); // Eliminar el HBox
+                    mostrarTabAliado(usuario);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al agregar aliado");
+                }
+            });
             botonAgregar.setPrefWidth(69);
             botonAgregar.setPrefHeight(25);
             botonAgregar.setLayoutX(283);
@@ -1027,5 +1048,270 @@ public class MuroViewController {
 
     }
 
+    private void openEstadisticas() throws IOException {
+        JOptionPane.showMessageDialog(null,"Bienvenido al panel de estadisticas de Marketplace.");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/co/estadisticas-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),601,469);
+        Stage stage = new Stage();
 
-  }
+        EstadisticasViewController statsViewController = fxmlLoader.getController();
+
+        stage.setScene(scene);
+        stage.setTitle("Estadisticas de Marketplace" );
+
+        Stage stageCerrar = (Stage) btnCerrarSesion.getScene().getWindow();
+        stageCerrar.close();
+
+        stage.show();
+    }
+
+    public Usuario userDtoToUser (UsuarioDto usuario){
+        return new Usuario(usuario.nombreUsuario(),usuario.contraseña(),usuario.personaAsociada());
+    }
+
+    public void mostrarTabAliado(Usuario usuario){
+
+        Tab tabUsuario = new Tab(usuario.getNombreUsuario());
+        tabUsuario.setClosable(true);
+
+        AnchorPane anchorPaneContenido = new AnchorPane();
+        anchorPaneContenido.setStyle("-fx-background-color: gray");
+        anchorPaneContenido.setPrefWidth(769);
+        anchorPaneContenido.setPrefHeight(511);
+        anchorPaneContenido.setLayoutX(0);
+        anchorPaneContenido.setLayoutY(0);
+
+        Label tituloMarketplace = crearTituloMarketplace();
+        AnchorPane.setTopAnchor(tituloMarketplace, 10.0);
+        AnchorPane.setLeftAnchor(tituloMarketplace, 20.0);
+
+        Separator separatrTitulo = new Separator();
+        separatrTitulo.setLayoutX(0);
+        separatrTitulo.setLayoutY(46);
+        separatrTitulo.setPrefWidth(769);
+        separatrTitulo.setPrefHeight(3);
+
+        Label perfilUsuario = new Label(usuario.getNombreUsuario());
+        perfilUsuario.setFont(Font.font("Berlin Sans FB", FontWeight.NORMAL, 22));
+        perfilUsuario.setLayoutX(38);
+        perfilUsuario.setLayoutY(65);
+        perfilUsuario.setPrefWidth(160);
+        perfilUsuario.setPrefHeight(21);
+
+        Button botonEliminarAmistad = new Button("Eliminar Amigo");
+        botonEliminarAmistad.setStyle("-fx-background-color:  #2b94c8; -fx-text-fill: white;");
+        botonEliminarAmistad.setPrefWidth(104);
+        botonEliminarAmistad.setPrefHeight(25);
+        botonEliminarAmistad.setLayoutX(229);
+        botonEliminarAmistad.setLayoutY(63);
+
+        botonEliminarAmistad.setOnAction(e -> {
+            eliminarAliado(usuario);
+            tabPanePrincipal.getTabs().remove(tabUsuario); // Cierra el tab
+        });
+
+        //Setear action del btn
+
+        Separator separator2 = new Separator();
+        separator2.setLayoutX(0);
+        separator2.setLayoutY(101);
+        separator2.setPrefWidth(769);
+        separator2.setPrefHeight(3);
+
+        TextField txtMensajeParaAliado = new TextField();
+        txtMensajeParaAliado.setPromptText("Escribe un mensaje");
+        txtMensajeParaAliado.setPrefWidth(157);
+        txtMensajeParaAliado.setPrefHeight(25);
+        txtMensajeParaAliado.setLayoutX(38);
+        txtMensajeParaAliado.setLayoutY(122);
+
+        Button btnEnviarMensageAliado = new Button("Enviar Mensaje");
+        btnEnviarMensageAliado.setStyle("-fx-background-color:  #2b94c8; -fx-text-fill: white;");
+        btnEnviarMensageAliado.setPrefWidth(104);
+        btnEnviarMensageAliado.setPrefHeight(25);
+        btnEnviarMensageAliado.setLayoutX(229);
+        btnEnviarMensageAliado.setLayoutY(122);
+        //setear action del btn
+
+        TabPane tabPaneSusPublicaciones = new TabPane();
+        tabPaneSusPublicaciones.setPrefWidth(769);
+        tabPaneSusPublicaciones.setPrefHeight(333);
+        tabPaneSusPublicaciones.setLayoutX(-2);
+        tabPaneSusPublicaciones.setLayoutY(175);
+
+        Tab tabSusPublis = new Tab();
+        tabSusPublis.setText("Sus publicaciones");
+        tabPaneSusPublicaciones.getTabs().add(tabSusPublis);
+        tabSusPublis.setClosable(false);
+
+        AnchorPane anchorTab = new AnchorPane();
+        anchorTab.setLayoutX(0);
+        anchorTab.setLayoutY(0);
+        anchorTab.setPrefWidth(769);
+        anchorTab.setPrefHeight(304);
+        tabSusPublis.setContent(anchorTab);
+
+        ScrollPane scrollSusPublis = new ScrollPane();
+        scrollSusPublis.setPrefWidth(769);
+        scrollSusPublis.setPrefHeight(304);
+        scrollSusPublis.setLayoutX(0);
+        scrollSusPublis.setLayoutY(0);
+        anchorTab.getChildren().add(scrollSusPublis);
+
+        AnchorPane anchorScrollPane = new AnchorPane();
+        anchorScrollPane.setLayoutX(0);
+        anchorScrollPane.setLayoutY(0);
+        anchorScrollPane.setPrefWidth(753);
+        anchorScrollPane.setPrefHeight(288);
+        scrollSusPublis.setContent(anchorScrollPane);
+        anchorScrollPane.setStyle("-fx-background-color: gray");
+
+        VBox vboxSusPublis = new VBox();
+        vboxSusPublis.setPrefWidth(753);
+        vboxSusPublis.setPrefHeight(288);
+        vboxSusPublis.setLayoutX(0);
+        vboxSusPublis.setLayoutY(0);
+        vboxSusPublis.setSpacing(10);
+        anchorScrollPane.getChildren().add(vboxSusPublis);
+
+        for ( Publicacion p : usuario.getPublicaciones()){
+
+            HBox hboxPublicacion = new HBox();
+            hboxPublicacion.setSpacing(10);
+            hboxPublicacion.setStyle("-fx-background-color: #bdc3c7;");
+            hboxPublicacion.setPrefWidth(742);
+            hboxPublicacion.setPrefHeight(148);
+
+            AnchorPane anchorPublicacion = new AnchorPane();
+            anchorPublicacion.setPrefWidth(742);
+            anchorPublicacion.setPrefHeight(148);
+            hboxPublicacion.getChildren().add(anchorPublicacion);
+
+            Image imagenProducto = new Image(Objects.requireNonNull(getClass().getResourceAsStream(p.getProductoPublicado().getRutaImagen())));
+            ImageView imageProducto = new ImageView(imagenProducto);
+            imageProducto.setLayoutX(14);
+            imageProducto.setLayoutY(13);
+            imageProducto.setFitHeight(110);
+            imageProducto.setFitWidth(191);
+            imageProducto.setPreserveRatio(true);
+
+            Label labelNombreAliado = new Label(usuario.getNombreUsuario());
+            labelNombreAliado.setFont(Font.font("Berlin Sans FB", 18));
+            labelNombreAliado.setLayoutX(236);
+            labelNombreAliado.setLayoutY(14);
+
+            Label labelFechaPublicacion = new Label(p.getFechaPublicacion().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            labelFechaPublicacion.setLayoutX(356);
+            labelFechaPublicacion.setLayoutY(16);
+
+            Label labelHoraPublicacion = new Label(p.getHoraPublicacion().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            labelHoraPublicacion.setLayoutX(466);
+            labelHoraPublicacion.setLayoutY(16);
+
+            Label labelNombreProducto = new Label(p.getProductoPublicado().getNombre());
+            labelNombreProducto.setFont(Font.font("Berlin Sans FB", 14));
+            labelNombreProducto.setLayoutX(542);
+            labelNombreProducto.setLayoutY(16);
+
+            double precioProducto = p.getProductoPublicado().getPrecio();
+            String precioProductoString = String.format("%.2f", precioProducto);
+            Label labelPrecioProducto = new Label("Precio: " + precioProductoString);
+            labelPrecioProducto.setLayoutX(648);
+            labelPrecioProducto.setLayoutY(16);
+
+            Button botonLikePublicacion = new Button("Like");
+            botonLikePublicacion.setLayoutX(478);
+            botonLikePublicacion.setLayoutY(81);
+            botonLikePublicacion.setStyle("-fx-background-color: #5d6d7e");
+            botonLikePublicacion.setPrefWidth(37);
+            botonLikePublicacion.setPrefHeight(25);
+
+            TextField txtComentarioPublicacion = new TextField();
+            txtComentarioPublicacion.setLayoutX(522);
+            txtComentarioPublicacion.setLayoutY(81);
+            txtComentarioPublicacion.setPrefWidth(132);
+            txtComentarioPublicacion.setPrefHeight(25);
+            txtComentarioPublicacion.setPromptText("Escribe un comentario");
+
+            Button botonComentarPublicacion = new Button("Comentar");
+            botonComentarPublicacion.setLayoutX(659);
+            botonComentarPublicacion.setLayoutY(81);
+            botonComentarPublicacion.setPrefWidth(69);
+            botonComentarPublicacion.setPrefHeight(25);
+            botonComentarPublicacion.setStyle("-fx-background-color: #5d6d7e");
+
+            TextFlow textFlowDescripcionPublicacion = new TextFlow();
+            textFlowDescripcionPublicacion.setLayoutX(229);
+            textFlowDescripcionPublicacion.setLayoutY(48);
+            textFlowDescripcionPublicacion.setPrefHeight(68);
+            textFlowDescripcionPublicacion.setPrefWidth(163);
+            Text textoDescripcionPublicacion = new Text(p.getDescripcionPublicacion());
+            textFlowDescripcionPublicacion.getChildren().add(textoDescripcionPublicacion);
+
+            ListView<String> listViewComentarios = new ListView<>();
+            listViewComentarios.setLayoutX(236);
+            listViewComentarios.setLayoutY(120);
+            listViewComentarios.setPrefHeight(60);
+            listViewComentarios.setPrefWidth(300);
+            listViewComentarios.setStyle("-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; -fx-padding: 5;");
+
+            // Agregar comentarios iniciales a ListView
+            for (Comentario comentario : p.getListaComentarios()) {
+                String comentarioTexto = comentario.getUsuario().getNombreUsuario() + ": " + comentario.getContenido();
+                listViewComentarios.getItems().add(comentarioTexto);
+            }
+
+            // Agregar nuevo comentario al ListView al presionar "Comentar"
+            botonComentarPublicacion.setOnAction(e -> {
+                String comentarioTexto = txtComentarioPublicacion.getText().trim();
+                if (!comentarioTexto.isEmpty()) {
+                    listViewComentarios.getItems().add(usuario.getNombreUsuario() + ": " + comentarioTexto);
+                    txtComentarioPublicacion.clear();
+                }
+            });
+
+            anchorPublicacion.getChildren().addAll( imageProducto, labelNombreAliado, labelFechaPublicacion, labelHoraPublicacion,
+                    labelNombreProducto, botonLikePublicacion, txtComentarioPublicacion,
+                    botonComentarPublicacion, textFlowDescripcionPublicacion, labelPrecioProducto,listViewComentarios);
+
+            vboxSusPublis.getChildren().add(hboxPublicacion);
+
+
+        }
+
+        anchorPaneContenido.getChildren().addAll(tituloMarketplace,separatrTitulo, perfilUsuario,botonEliminarAmistad,txtMensajeParaAliado,btnEnviarMensageAliado,separator2,tabPaneSusPublicaciones);
+        tabUsuario.setContent(anchorPaneContenido);
+        tabPanePrincipal.getTabs().add(tabUsuario);
+
+
+    }
+
+
+    private Label crearTituloMarketplace() {
+
+        Label tituloMarketplace = new Label("MARKETPLACE");
+        tituloMarketplace.setFont(Font.font("Berlin Sans FB", 34));
+        tituloMarketplace.setTextAlignment(TextAlignment.LEFT);
+        tituloMarketplace.setPrefWidth(226);
+        tituloMarketplace.setPrefHeight(38);
+        tituloMarketplace.setLayoutX(15);
+        tituloMarketplace.setLayoutY(8);
+
+        LinearGradient paint = new LinearGradient(
+                0.0, 0.0, 0.5261, 1.0, true, CycleMethod.NO_CYCLE,
+                new Stop(0.0, Color.DODGERBLUE),
+                new Stop(1.0, Color.BLACK)
+        );
+
+
+        tituloMarketplace.setTextFill(paint);
+
+        return tituloMarketplace;
+    }
+
+    public void eliminarAliado (Usuario usuario){
+        JOptionPane.showMessageDialog(null,"Se ha eliminado este vendedor de tus aliados :(");
+
+    }
+
+}

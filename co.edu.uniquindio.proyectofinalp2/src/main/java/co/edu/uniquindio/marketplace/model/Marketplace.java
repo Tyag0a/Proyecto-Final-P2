@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, ICrudpersona, ICrudPublicacion {
+public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, ICrudpersona, ICrudPublicacion, ICrudAliado {
 
     private List<Producto> productos = new ArrayList<>();
     private List<Usuario> usuarios = new ArrayList<>();
@@ -321,5 +321,18 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
+    }
+
+    @Override
+    public boolean agregarAliado( Usuario usuario) {
+        for (Vendedor vendedor : vendedores) {
+            if (vendedor.getListVendedorsAsociados().contains(usuario.getPersonaAsociada())) {
+                return false;
+            }
+            vendedor.getListVendedorsAsociados().add((Vendedor) usuario.getPersonaAsociada());
+            return true;
+
+        }
+        return false;
     }
 }

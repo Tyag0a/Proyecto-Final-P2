@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.viewcontroller;
 
+import co.edu.uniquindio.marketplace.controller.EstadisticasController;
 import co.edu.uniquindio.marketplace.controller.MuroController;
 
 import java.io.File;
@@ -16,8 +17,13 @@ import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
+import co.edu.uniquindio.marketplace.mapping.proxy.ImageProxy;
 import co.edu.uniquindio.marketplace.model.*;
 
+import co.edu.uniquindio.marketplace.model.composite.Categoria;
+import co.edu.uniquindio.marketplace.model.observer.Observer;
+import co.edu.uniquindio.marketplace.services.IImage;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +48,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-public class MuroViewController {
+public class MuroViewController implements Observer {
     private UsuarioDto usuario;
 
     static MuroController muroController;
@@ -414,10 +420,20 @@ public class MuroViewController {
     }
 
     @FXML
+    void onMostrarCategorias(ActionEvent event) {
+        verCategorias();
+
+    }
+
+    @FXML
     void initialize() {
 
         muroController = new MuroController();
-        Vendedor vendedor = sessionManager.getVendedor();
+        modelFactory = new ModelFactory();
+
+        for (Vendedor vendedor : modelFactory.getMarketplace().getVendedores()) {
+            vendedor.agregarContacto(this);
+        }
 
         initView();
 
@@ -625,6 +641,7 @@ public class MuroViewController {
             if (!comentario.isEmpty()) {
                 listViewComentarios.getItems().add(usuario.nombreUsuario() + ": " + comentario);
                 txtComentarioNuevaPublicacion.clear();
+
             }
         });
 
@@ -704,9 +721,10 @@ public class MuroViewController {
                 nuevaPublicacioninitPane.setStyle("-fx-background-color: #bdc3c7");
                 nuevaPublicacioninitVBox.getChildren().add(nuevaPublicacioninitPane);
 
-                Image imagenProducto = new Image(Objects.
-                        requireNonNull(getClass().
-                                getResourceAsStream(publicacion.getProductoPublicado().getRutaImagen())));
+                ImageProxy imageProxy = (ImageProxy) publicacion.getProductoPublicado().getImagen();
+                String rutaImagen = imageProxy.getRutaImagen();
+                Image imagenProducto = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaImagen)));
+
                 ImageView imageinitProducto = new ImageView();
                 imageinitProducto.setImage(imagenProducto);
                 imageinitProducto.setLayoutX(14);
@@ -822,9 +840,10 @@ public class MuroViewController {
         String textoPrecio = txtPrecioNuevoProducto.getText();
         double precio;
         precio = Double.parseDouble(textoPrecio);
+        IImage proxyImagen = new ImageProxy(imageSeleccionada.toString());
 
         return new Producto(txtNombreNuevoProducto.getText(),
-                "",txtCategoriaNuevoProducto.getText(),precio, EstadoProducto.PUBLICADO);
+                proxyImagen,txtCategoriaNuevoProducto.getText(),precio, EstadoProducto.PUBLICADO);
     }
 
     public void setUsuario(UsuarioDto usuario) {
@@ -1051,8 +1070,10 @@ public class MuroViewController {
     private void openEstadisticas() throws IOException {
         JOptionPane.showMessageDialog(null,"Bienvenido al panel de estadisticas de Marketplace.");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/co/estadisticas-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),601,469);
+        Scene scene = new Scene(fxmlLoader.load(),763,539);
         Stage stage = new Stage();
+
+        EstadisticasViewController controller = fxmlLoader.getController();
 
         EstadisticasViewController statsViewController = fxmlLoader.getController();
 
@@ -1187,7 +1208,10 @@ public class MuroViewController {
             anchorPublicacion.setPrefHeight(148);
             hboxPublicacion.getChildren().add(anchorPublicacion);
 
-            Image imagenProducto = new Image(Objects.requireNonNull(getClass().getResourceAsStream(p.getProductoPublicado().getRutaImagen())));
+            ImageProxy proxyImagen = (ImageProxy) p.getProductoPublicado().getImagen();
+            String rutaImagen = proxyImagen.getRutaImagen();
+
+            Image imagenProducto = new Image(Objects.requireNonNull(getClass().getResourceAsStream(rutaImagen)));
             ImageView imageProducto = new ImageView(imagenProducto);
             imageProducto.setLayoutX(14);
             imageProducto.setLayoutY(13);
@@ -1312,6 +1336,36 @@ public class MuroViewController {
     public void eliminarAliado (Usuario usuario){
         JOptionPane.showMessageDialog(null,"Se ha eliminado este vendedor de tus aliados :(");
 
+    }
+
+
+
+    public void verCategorias (){
+        List<Categoria> categorias = modelFactory.getCategorias();
+
+        StringBuilder categoriasTexto = new StringBuilder("Categorías disponibles:\n");
+        for (Categoria categoria : categorias) {
+            categoriasTexto.append("- ").append(categoria.getNombre()).append("\n");
+        }
+
+        JOptionPane.showMessageDialog(
+                null,
+                categoriasTexto.toString(),
+                "Categorías",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+    }
+
+    @Override
+    public void update(String notification) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Notificación");
+            alert.setHeaderText("Nueva actividad en el Marketplace");
+            alert.setContentText(notification);
+            alert.showAndWait();
+        });
     }
 
 }

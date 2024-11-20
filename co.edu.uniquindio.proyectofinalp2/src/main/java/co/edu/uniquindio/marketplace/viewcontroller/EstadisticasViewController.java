@@ -3,12 +3,14 @@ package co.edu.uniquindio.marketplace.viewcontroller;
 import co.edu.uniquindio.marketplace.controller.EstadisticasController;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 
 public class EstadisticasViewController {
@@ -243,6 +245,7 @@ public class EstadisticasViewController {
         assert lblUserProductoTop51 != null : "fx:id=\"lblUserProductoTop51\" was not injected: check your FXML file 'estadisticas-view.fxml'.";
 
     }
+
 
 }
 

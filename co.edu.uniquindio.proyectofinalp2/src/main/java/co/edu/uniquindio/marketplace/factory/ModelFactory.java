@@ -4,19 +4,28 @@ import co.edu.uniquindio.marketplace.mapping.dto.PublicacionDto;
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.mapping.mappers.MarketplaceMappingImpl;
+import co.edu.uniquindio.marketplace.mapping.proxy.ImageProxy;
 import co.edu.uniquindio.marketplace.model.*;
+import co.edu.uniquindio.marketplace.model.composite.Categoria;
+import co.edu.uniquindio.marketplace.model.composite.CategoriaComponent;
+import co.edu.uniquindio.marketplace.services.IImage;
 import co.edu.uniquindio.marketplace.services.IModelFactoryService;
 import javafx.beans.property.Property;
 import javafx.scene.image.Image;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class ModelFactory implements IModelFactoryService {
-    private static ModelFactory instance;
+    static ModelFactory instance;
     static Marketplace marketplace;
     MarketplaceMappingImpl mapper;
+
+    private Categoria categoriaElectronica;
+    private Categoria categoriaRopa;
+    private Categoria categoriaAccesorios;
 
     public static ModelFactory getInstance(){
         if(instance == null){
@@ -25,7 +34,7 @@ public class ModelFactory implements IModelFactoryService {
         return instance;
     }
 
-    private ModelFactory(){
+    public ModelFactory(){
         mapper = new MarketplaceMappingImpl();
         marketplace = inicializarDatos();
     }
@@ -106,20 +115,55 @@ public class ModelFactory implements IModelFactoryService {
 
         //Productos
 
+        IImage imagenP1 = new ImageProxy("/co/edu/uniquindio/co/viewmedia/telefono_jugueteP1.jpg");
+        IImage imagenP2 = new ImageProxy("/co/edu/uniquindio/co/viewmedia/televisionn_P2.jpeg");
+        IImage imagenP3 = new ImageProxy("/co/edu/uniquindio/co/viewmedia/camisa_P3.jpg");
+        IImage imagenP4 = new ImageProxy("/co/edu/uniquindio/co/viewmedia/P4Image.png");
+        IImage imagenP5 = new ImageProxy("/co/edu/uniquindio/co/viewmedia/P5Image.png");
+
         Producto p1 = new Producto("Telefono juguete",
-                "/co/edu/uniquindio/co/viewmedia/telefono_jugueteP1.jpg","Aparato electronico",15.000,EstadoProducto.PUBLICADO);
+                imagenP1,"Aparato electronico",15.000,EstadoProducto.PUBLICADO);
 
         Producto p2 = new Producto("TV 70 pulgadas",
-                "/co/edu/uniquindio/co/viewmedia/televisionn_P2.jpeg","Aparato electronico",600.000,EstadoProducto.PUBLICADO);
+                imagenP2,"Aparato electronico",600.000,EstadoProducto.PUBLICADO);
 
         Producto p3 = new Producto("Camisa",
-                "/co/edu/uniquindio/co/viewmedia/camisa_P3.jpg","Ropa",70.000, EstadoProducto.PUBLICADO);
+                imagenP3,"Ropa",70.000, EstadoProducto.PUBLICADO);
 
         Producto p4 = new Producto("Gafas",
-                "/co/edu/uniquindio/co/viewmedia/P4Image.png","Accesorios",200.000,EstadoProducto.PUBLICADO);
+                imagenP4,"Accesorios",200.000,EstadoProducto.PUBLICADO);
 
         Producto p5 = new Producto("Traje de gala",
-                "/co/edu/uniquindio/co/viewmedia/P5Image.png","ropa",500.000,EstadoProducto.PUBLICADO);
+                imagenP5,"ropa",500.000,EstadoProducto.PUBLICADO);
+
+        // Crear Categorías (implementacion composite)
+
+        CategoriaComponent categoriaElectronica = new Categoria("Electrónica");
+        CategoriaComponent categoriaRopa = new Categoria("Ropa");
+        CategoriaComponent categoriaAccesorios = new Categoria("Accesorios");
+
+        CategoriaComponent subcategoriaTelefonos = new Categoria("Teléfonos");
+        CategoriaComponent subcategoriaTelevisores = new Categoria("Televisores");
+
+        // Agregar productos a las subcategorías
+        ((Categoria) subcategoriaTelevisores).agregarComponente(p2);
+
+        // Agregar subcategorías a la categoría principal
+        ((Categoria) categoriaElectronica).agregarComponente(subcategoriaTelefonos);
+        ((Categoria) categoriaElectronica).agregarComponente(subcategoriaTelevisores);
+
+        // Agregar productos directamente a categorías
+        ((Categoria) categoriaRopa).agregarComponente(p3);
+        ((Categoria) categoriaRopa).agregarComponente(p5);
+
+        ((Categoria) categoriaAccesorios).agregarComponente(p4);
+
+        // Mostrar jerarquía de categorías y productos
+        System.out.println("--------------------------TESTEO COMPOSITE-------------------------");
+        System.out.println("Estructura de Categorías:");
+        categoriaElectronica.mostrarDetalles();
+        categoriaRopa.mostrarDetalles();
+        categoriaAccesorios.mostrarDetalles();
 
 
         //Publicaciones
@@ -163,10 +207,9 @@ public class ModelFactory implements IModelFactoryService {
         vendedor5.setMuro(muro5);
 
         //admin
-
-        //        Usuario usuario4 = new Usuario("juanalpargata","8921j",null);
-        //        Administrador administrador = new Administrador("juan","zuckerberg","14252324","direccionadmin","01",usuario4);
-        //        usuario4.setPersonaAsociada(administrador);
+        Usuario usuario6 = new Usuario("sAdmin","admin9182",null);
+        Administrador administrador = new Administrador("sam","seppiol","209484298","alli","011",usuario6);
+        usuario6.setPersonaAsociada(administrador);
 
         usuario1.getPublicaciones().add(publicacion1);
         usuario2.getPublicaciones().add(publicacion2);
@@ -174,7 +217,7 @@ public class ModelFactory implements IModelFactoryService {
         usuario4.getPublicaciones().add(publicacion4);
         usuario5.getPublicaciones().add(publicacion5);
 
-        //agregar usuarios y personas
+        //agregar usuarios, personas y admin
 
         marketplace.getUsuarios().add(usuario1);
         marketplace.getVendedores().add(vendedor1);
@@ -186,6 +229,8 @@ public class ModelFactory implements IModelFactoryService {
         marketplace.getVendedores().add(vendedor4);
         marketplace.getUsuarios().add(usuario5);
         marketplace.getVendedores().add(vendedor5);
+        marketplace.getUsuarios().add(usuario6);
+        marketplace.setAdministrador(administrador);
 
         //agregar productos
 
@@ -217,6 +262,9 @@ public class ModelFactory implements IModelFactoryService {
         Comentario comentario5 = new Comentario("facha",usuario2);
         publicacion5.getListaComentarios().add(comentario5);
 
+        Comentario comentario6 = new Comentario("te voy a banear por chistoso",usuario6);
+        publicacion5.getListaComentarios().add(comentario6);
+
 
 
 
@@ -224,6 +272,14 @@ public class ModelFactory implements IModelFactoryService {
 
         return marketplace;
 
+    }
+
+    public List<Categoria> getCategorias() {
+        return List.of(
+                new Categoria("Electrónica"),
+                new Categoria("Ropa"),
+                new Categoria("Accesorios")
+        );
     }
 
 

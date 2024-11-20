@@ -8,11 +8,12 @@ import co.edu.uniquindio.marketplace.model.observer.Subject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Vendedor extends Persona {
     private Subject subject;
     private final int maxAsociados = 10;
-    Collection<Producto> listProductos;
+    List<Producto> listProductos;
     Muro muro;
     Collection<Vendedor> listVendedorsAsociados;
     Collection<Vendedor> listChats;
@@ -35,13 +36,10 @@ public class Vendedor extends Persona {
         return new VendedorBuilder();
     }
 
-    public Collection<Producto> getListProductos() {
+    public List<Producto> getListProductos() {
         return listProductos;
     }
 
-    public void setListProductos(Collection<Producto> listProductos) {
-        this.listProductos = listProductos;
-    }
 
     public Muro getMuro() {
         return muro;
@@ -111,4 +109,7 @@ public class Vendedor extends Persona {
         System.out.println(this.nombre + " ha recibido el mensaje: " + mensaje);
     }
 
+    public void setListProductos(List<Producto> listProductos) {
+        this.listProductos = listProductos;
+    }
 }

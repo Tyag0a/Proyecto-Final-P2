@@ -19,4 +19,8 @@ public class ImageProxy implements IImage {
         imagenReal.mostrar();
 
     }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
 }

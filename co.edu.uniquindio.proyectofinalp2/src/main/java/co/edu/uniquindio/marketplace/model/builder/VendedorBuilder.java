@@ -2,14 +2,15 @@ package co.edu.uniquindio.marketplace.model.builder;
 import co.edu.uniquindio.marketplace.model.*;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 public class VendedorBuilder extends PersonaBuilder<VendedorBuilder> {
-    private Collection<Producto> listProductos = new LinkedList<>();
+    private List<Producto> listProductos = new LinkedList<>();
     private Muro muro = new Muro();
     private Collection<Vendedor> listVendedorsAsociados = new LinkedList<>();
     private Collection<Vendedor> listChats = new LinkedList<>();
 
-    public VendedorBuilder setListProductos(Collection<Producto> listProductos) {
+    public VendedorBuilder setListProductos(List<Producto> listProductos) {
         this.listProductos = listProductos;
         return this;
     }

@@ -366,5 +366,6 @@
       <Button fx:id="btnOpenWindow3" layoutX="491.0" layoutY="556.0" mnemonicParsing="false" onAction="#onOpenWindow3" style="-fx-background-color: #2b94c8;" text="ESTADISTICAS DE LA RED" />
       <Separator layoutX="32.0" orientation="VERTICAL" prefHeight="540.0" prefWidth="10.0" />
       <Separator layoutX="38.0" layoutY="542.0" prefHeight="2.0" prefWidth="769.0" />
+      <Button fx:id="btnVerCategorias" layoutX="356.0" layoutY="556.0" mnemonicParsing="false" onAction="#onMostrarCategorias" style="-fx-background-color: #2b94c8;" text="VER CATEGORIAS" />
    </children>
 </AnchorPane>

@@ -5,6 +5,7 @@ import co.edu.uniquindio.marketplace.controller.LoginController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.marketplace.controller.MuroController;
@@ -13,6 +14,7 @@ import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.mapping.mappers.MarketplaceMappingImpl;
+import co.edu.uniquindio.marketplace.model.Administrador;
 import co.edu.uniquindio.marketplace.model.Persona;
 import co.edu.uniquindio.marketplace.model.Vendedor;
 import javafx.event.ActionEvent;
@@ -103,6 +105,7 @@ public class LoginViewController {
     void initialize() {
         initView();
         loginController = new LoginController();
+        modelFactory = new ModelFactory();
 
 
 
@@ -143,16 +146,37 @@ public class LoginViewController {
     }
 
     public void login() throws IOException {
+
         UsuarioDto userDto = crearUserDto();
+        Administrador administrador = modelFactory.getMarketplace().getAdministrador();
+        boolean esAdmin = Objects.equals(txtNombreUsuario.getText(), "sAdmin") &&
+                Objects.equals(txtContraseñaUser.getText(), "admin9182");
+
+        // Si es administrador
+        if (esAdmin) {
+            JOptionPane.showMessageDialog(null,"Sesion iniciada como administrador. Bienvenido Admin");
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/co/admin-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),601,469);
+            Stage stage = new Stage();
+
+            AdminViewController admin = fxmlLoader.getController();
+
+            Stage stageCerrar = (Stage) btnLogin.getScene().getWindow();
+            stageCerrar.close();
+
+            stage.setScene(scene);
+            stage.setTitle("Admin" );
+
+            stage.show();
+            return;
+        }
+
         if (loginController.validarUsuario(userDto)) {
             openWindow2(userDto);
-
-
+            return;
         }
-        else {
-            JOptionPane.showMessageDialog(null,"Por favor ingrese de nuevo sus datos, ha ocurrido un error en la validación.");
 
-        }
+
 
 
     }

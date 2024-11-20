@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.model.builder;
 
+import co.edu.uniquindio.marketplace.mapping.proxy.ImageProxy;
 import co.edu.uniquindio.marketplace.model.*;
 import javafx.scene.image.Image;
 
@@ -42,6 +43,7 @@ public class ProductoBuilder {
     }
 
     public Producto build() {
-        return new Producto(nombre, rutaImagen, categoria, precio,estadoProducto);
+        ImageProxy image = new ImageProxy(rutaImagen);
+        return new Producto(nombre, image, categoria, precio,estadoProducto);
     }
 }

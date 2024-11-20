@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.model;
 
+import co.edu.uniquindio.marketplace.mapping.proxy.ImageProxy;
 import co.edu.uniquindio.marketplace.services.*;
 import javafx.scene.image.Image;
 
@@ -38,7 +39,8 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
     @Override
     public String crearProducto(String nombre, String imagen, String categoria, double precio, EstadoProducto estado) throws Exception {
-        Producto producto = new Producto(nombre, imagen, categoria, precio,estado);
+        ImageProxy proxyimage = new ImageProxy(imagen);
+        Producto producto = new Producto(nombre, proxyimage, categoria, precio,estado);
         productos.add(producto);
         return "Producto creado: " + nombre;
     }
@@ -258,7 +260,7 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
      */
     public boolean verificarUsuario (String nombreUsuario, String contraseña){
         for (Usuario usuario : usuarios) {
-            if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contraseña)){
+            if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contraseña) && usuario.getNombreUsuario() != "sAdmin"){
                 return true;
             }
 
@@ -334,5 +336,9 @@ public class Marketplace implements ICrudUsuario, ICrudProducto, ICrudVendedor, 
 
         }
         return false;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
     }
 }

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.mapping.mappers;
 
 import co.edu.uniquindio.marketplace.mapping.dto.*;
+import co.edu.uniquindio.marketplace.mapping.proxy.ImageProxy;
 import co.edu.uniquindio.marketplace.model.*;
 import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
 
@@ -56,7 +57,8 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
 
     @Override
     public ProductoDto productoToProductoDto(Producto producto) {
-        return new ProductoDto(producto.getNombre(), producto.getRutaImagen(), producto.getCategoria(), producto.getPrecio(),producto.getEstadoProducto());
+        String image = producto.getRutaImage();
+        return new ProductoDto(producto.getNombre(),image , producto.getCategoria(), producto.getPrecio(),producto.getEstadoProducto());
     }
 
     @Override

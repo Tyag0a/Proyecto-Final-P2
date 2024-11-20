@@ -1,28 +1,31 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.model.builder.ProductoBuilder;
+import co.edu.uniquindio.marketplace.model.composite.CategoriaComponent;
+import co.edu.uniquindio.marketplace.services.IImage;
 import javafx.scene.image.Image;
 
 import java.time.temporal.TemporalAccessor;
 
-public class Producto {
+public class Producto implements CategoriaComponent {
     String nombre;
-    Image imagen;
+    Image image;
     String categoria;
     double precio;
     Publicacion publicacion;
     EstadoProducto estadoProducto;
     String rutaImagen;
     String idVendedor;
+    IImage imagen;
 
-    public Producto(String nombre, String rutaImagen, String categoria, double precio, EstadoProducto estadoProducto) {
+    public Producto(String nombre, IImage imagen, String categoria, double precio, EstadoProducto estadoProducto) {
         this.nombre = nombre;
-        this.imagen = new Image(getClass().getResource(rutaImagen).toString());
         this.categoria = categoria;
         this.precio = precio;
         this.publicacion = publicacion;
         this.estadoProducto = estadoProducto;
         this.rutaImagen = rutaImagen;
+        this.imagen = imagen;
     }
 
     public static ProductoBuilder builder() {
@@ -37,16 +40,16 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public Image getImagen() {
-        return imagen;
+    public Image getImage() {
+        return image;
     }
 
-    public  String getRutaImagen() {
+    public  String getRutaImage() {
         return rutaImagen;
     }
 
     public void setImagen(Image imagen) {
-        this.imagen = imagen;
+        this.image = image;
     }
 
     public String getCategoria() {
@@ -89,7 +92,14 @@ public class Producto {
         this.idVendedor = idVendedor;
     }
 
-    public boolean getLikes() {
-        return false;
+    public boolean getLikes() {return false;}
+
+    public IImage getImagen() {return imagen;}
+
+    public void setImagen(IImage imagen) { this.imagen = imagen; }
+
+    @Override
+    public void mostrarDetalles() {
+        System.out.println("Nombre: " + nombre + " Precio: " + precio);
     }
 }

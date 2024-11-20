@@ -4,23 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Categoria implements CategoriaComponent {
+
     private String nombre;
-    private List<CategoriaComponent> productos = new ArrayList<>();
+    private List<CategoriaComponent> componentes = new ArrayList<>();
 
     public Categoria(String nombre) {
         this.nombre = nombre;
     }
 
-    public void agregarProducto(CategoriaComponent producto) {
-        productos.add(producto);
+    public void agregarComponente(CategoriaComponent componente) {
+        componentes.add(componente);
+    }
+
+    public void removerComponente(CategoriaComponent componente) {
+        componentes.remove(componente);
     }
 
     @Override
     public void mostrarDetalles() {
         System.out.println("Categoría: " + nombre);
-        for (CategoriaComponent producto : productos) {
-            producto.mostrarDetalles();
+        for (CategoriaComponent componente : componentes) {
+            componente.mostrarDetalles();
         }
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 }
